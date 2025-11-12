@@ -20,3 +20,56 @@
 [2025-11-12 20:48:28] [INFO] Request: GET /users/create
 [2025-11-12 20:48:28] [INFO] Request: GET /login
 [2025-11-12 20:48:28] [INFO] Response completed in 0.19ms
+[2025-11-12 21:06:29] [INFO] Request: GET /login
+[2025-11-12 21:06:29] [INFO] Response completed in 0.25ms
+[2025-11-12 21:06:30] [INFO] Request: GET /login
+[2025-11-12 21:06:30] [INFO] Response completed in 0.17ms
+[2025-11-12 21:06:31] [INFO] Request: GET /login
+[2025-11-12 21:06:31] [INFO] Response completed in 0.14ms
+[2025-11-12 21:06:34] [INFO] Request: GET /
+[2025-11-12 21:06:34] [INFO] Response completed in 0.01ms
+[2025-11-12 21:08:06] [ERROR] Exception occurred {"message":"Too few arguments to function Nexus\\Modules\\Exception\\ExceptionServiceProvider::{closure:Nexus\\Modules\\Exception\\ExceptionServiceProvider::register():15}(), 0 passed in \/srv\/http\/projects\/scheduler\/core\/Bootstrap\/Container.php on line 35 and exactly 1 expected","file":"\/srv\/http\/projects\/scheduler\/core\/Modules\/Exception\/ExceptionServiceProvider.php","line":15,"code":0,"trace":"#0 \/srv\/http\/projects\/scheduler\/core\/Bootstrap\/Container.php(35): Nexus\\Modules\\Exception\\ExceptionServiceProvider->{closure:Nexus\\Modules\\Exception\\ExceptionServiceProvider::register():15}()\n#1 \/srv\/http\/projects\/scheduler\/core\/Modules\/Exception\/ExceptionServiceProvider.php(35): Nexus\\Bootstrap\\Container->make()\n#2 \/srv\/http\/projects\/scheduler\/core\/Bootstrap\/Application.php(34): Nexus\\Modules\\Exception\\ExceptionServiceProvider->boot()\n#3 \/srv\/http\/projects\/scheduler\/nexus(16): Nexus\\Bootstrap\\Application->boot()\n#4 {main}","url":null,"method":null,"user_agent":null,"ip":null,"timestamp":"2025-11-12 21:08:06"}
+[2025-11-12 21:08:06] [ERROR] Exception: Too few arguments to function Nexus\Modules\Exception\ExceptionServiceProvider::{closure:Nexus\Modules\Exception\ExceptionServiceProvider::register():15}(), 0 passed in /srv/http/projects/scheduler/core/Bootstrap/Container.php on line 35 and exactly 1 expected
+[2025-11-12 21:08:06] [ERROR] File: /srv/http/projects/scheduler/core/Modules/Exception/ExceptionServiceProvider.php:15
+[2025-11-12 21:08:06] [ERROR] Stack trace:
+[2025-11-12 21:08:06] [ERROR] #0 /srv/http/projects/scheduler/core/Bootstrap/Container.php(35): Nexus\Modules\Exception\ExceptionServiceProvider->{closure:Nexus\Modules\Exception\ExceptionServiceProvider::register():15}()
+#1 /srv/http/projects/scheduler/core/Modules/Exception/ExceptionServiceProvider.php(35): Nexus\Bootstrap\Container->make()
+#2 /srv/http/projects/scheduler/core/Bootstrap/Application.php(34): Nexus\Modules\Exception\ExceptionServiceProvider->boot()
+#3 /srv/http/projects/scheduler/nexus(16): Nexus\Bootstrap\Application->boot()
+#4 {main}
+[2025-11-12 21:08:48] [ERROR] Exception occurred {"message":"Too few arguments to function Nexus\\Modules\\Exception\\ExceptionServiceProvider::{closure:Nexus\\Modules\\Exception\\ExceptionServiceProvider::register():15}(), 0 passed in \/srv\/http\/projects\/scheduler\/core\/Bootstrap\/Container.php on line 35 and exactly 1 expected","file":"\/srv\/http\/projects\/scheduler\/core\/Modules\/Exception\/ExceptionServiceProvider.php","line":15,"code":0,"trace":"#0 \/srv\/http\/projects\/scheduler\/core\/Bootstrap\/Container.php(35): Nexus\\Modules\\Exception\\ExceptionServiceProvider->{closure:Nexus\\Modules\\Exception\\ExceptionServiceProvider::register():15}()\n#1 \/srv\/http\/projects\/scheduler\/core\/Modules\/Exception\/ExceptionServiceProvider.php(35): Nexus\\Bootstrap\\Container->make()\n#2 \/srv\/http\/projects\/scheduler\/core\/Bootstrap\/Application.php(34): Nexus\\Modules\\Exception\\ExceptionServiceProvider->boot()\n#3 \/srv\/http\/projects\/scheduler\/nexus(16): Nexus\\Bootstrap\\Application->boot()\n#4 {main}","url":null,"method":null,"user_agent":null,"ip":null,"timestamp":"2025-11-12 21:08:48"}
+[2025-11-12 21:08:48] [ERROR] Exception: Too few arguments to function Nexus\Modules\Exception\ExceptionServiceProvider::{closure:Nexus\Modules\Exception\ExceptionServiceProvider::register():15}(), 0 passed in /srv/http/projects/scheduler/core/Bootstrap/Container.php on line 35 and exactly 1 expected
+[2025-11-12 21:08:48] [ERROR] File: /srv/http/projects/scheduler/core/Modules/Exception/ExceptionServiceProvider.php:15
+[2025-11-12 21:08:48] [ERROR] Stack trace:
+[2025-11-12 21:08:48] [ERROR] #0 /srv/http/projects/scheduler/core/Bootstrap/Container.php(35): Nexus\Modules\Exception\ExceptionServiceProvider->{closure:Nexus\Modules\Exception\ExceptionServiceProvider::register():15}()
+#1 /srv/http/projects/scheduler/core/Modules/Exception/ExceptionServiceProvider.php(35): Nexus\Bootstrap\Container->make()
+#2 /srv/http/projects/scheduler/core/Bootstrap/Application.php(34): Nexus\Modules\Exception\ExceptionServiceProvider->boot()
+#3 /srv/http/projects/scheduler/nexus(16): Nexus\Bootstrap\Application->boot()
+#4 {main}
+[2025-11-12 21:10:05] [ERROR] Exception occurred {"message":"Too few arguments to function Nexus\\Modules\\Exception\\ExceptionServiceProvider::{closure:Nexus\\Modules\\Exception\\ExceptionServiceProvider::register():15}(), 0 passed in \/srv\/http\/projects\/scheduler\/core\/Bootstrap\/Container.php on line 35 and exactly 1 expected","file":"\/srv\/http\/projects\/scheduler\/core\/Modules\/Exception\/ExceptionServiceProvider.php","line":15,"code":0,"trace":"#0 \/srv\/http\/projects\/scheduler\/core\/Bootstrap\/Container.php(35): Nexus\\Modules\\Exception\\ExceptionServiceProvider->{closure:Nexus\\Modules\\Exception\\ExceptionServiceProvider::register():15}()\n#1 \/srv\/http\/projects\/scheduler\/core\/Modules\/Exception\/ExceptionServiceProvider.php(35): Nexus\\Bootstrap\\Container->make()\n#2 \/srv\/http\/projects\/scheduler\/core\/Bootstrap\/Application.php(34): Nexus\\Modules\\Exception\\ExceptionServiceProvider->boot()\n#3 \/srv\/http\/projects\/scheduler\/nexus(16): Nexus\\Bootstrap\\Application->boot()\n#4 {main}","url":null,"method":null,"user_agent":null,"ip":null,"timestamp":"2025-11-12 21:10:05"}
+[2025-11-12 21:10:05] [ERROR] Exception: Too few arguments to function Nexus\Modules\Exception\ExceptionServiceProvider::{closure:Nexus\Modules\Exception\ExceptionServiceProvider::register():15}(), 0 passed in /srv/http/projects/scheduler/core/Bootstrap/Container.php on line 35 and exactly 1 expected
+[2025-11-12 21:10:05] [ERROR] File: /srv/http/projects/scheduler/core/Modules/Exception/ExceptionServiceProvider.php:15
+[2025-11-12 21:10:05] [ERROR] Stack trace:
+[2025-11-12 21:10:05] [ERROR] #0 /srv/http/projects/scheduler/core/Bootstrap/Container.php(35): Nexus\Modules\Exception\ExceptionServiceProvider->{closure:Nexus\Modules\Exception\ExceptionServiceProvider::register():15}()
+#1 /srv/http/projects/scheduler/core/Modules/Exception/ExceptionServiceProvider.php(35): Nexus\Bootstrap\Container->make()
+#2 /srv/http/projects/scheduler/core/Bootstrap/Application.php(34): Nexus\Modules\Exception\ExceptionServiceProvider->boot()
+#3 /srv/http/projects/scheduler/nexus(16): Nexus\Bootstrap\Application->boot()
+#4 {main}
+[2025-11-12 21:11:10] [INFO] Request: GET /
+[2025-11-12 21:11:10] [INFO] Response completed in 0ms
+[2025-11-12 21:12:10] [INFO] Request: GET /test
+[2025-11-12 21:12:10] [INFO] Response completed in 0.01ms
+[2025-11-12 21:12:35] [INFO] Request: GET /test-error
+[2025-11-12 21:12:35] [INFO] Response completed in 0ms
+[2025-11-12 21:12:35] [ERROR] Exception occurred {"message":"This is a test error for demonstration purposes","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":91,"code":500,"trace":"#0 {main}","url":"\/test-error","method":"GET","user_agent":"curl\/8.17.0","ip":"::1","timestamp":"2025-11-12 21:12:35"}
+[2025-11-12 21:12:52] [INFO] Request: GET /test-error
+[2025-11-12 21:12:52] [INFO] Response completed in 0.01ms
+[2025-11-12 21:12:52] [ERROR] Exception occurred {"message":"This is a test error for demonstration purposes","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":91,"code":500,"trace":"#0 {main}","url":"\/test-error","method":"GET","user_agent":"curl\/8.17.0","ip":"::1","timestamp":"2025-11-12 21:12:52"}
+[2025-11-12 21:13:05] [INFO] Request: GET /test-error
+[2025-11-12 21:13:05] [INFO] Response completed in 0.01ms
+[2025-11-12 21:13:05] [ERROR] Exception occurred {"message":"This is a test error for demonstration purposes","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":91,"code":500,"trace":"#0 {main}","url":"\/test-error","method":"GET","user_agent":"curl\/8.17.0","ip":"::1","timestamp":"2025-11-12 21:13:05"}
+[2025-11-12 21:13:17] [INFO] Request: GET /test-error
+[2025-11-12 21:13:17] [INFO] Response completed in 0ms
+[2025-11-12 21:13:17] [ERROR] Exception occurred {"message":"This is a test error for demonstration purposes","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":91,"code":500,"trace":"#0 {main}","url":"\/test-error","method":"GET","user_agent":"curl\/8.17.0","ip":"::1","timestamp":"2025-11-12 21:13:17"}
+[2025-11-12 21:13:29] [ERROR] Exception occurred {"message":"Middleware 'throttle' not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":91,"code":500,"trace":"#0 {main}","url":"\/test-validation","method":"POST","user_agent":"curl\/8.17.0","ip":"::1","timestamp":"2025-11-12 21:13:29"}
+[2025-11-12 21:13:59] [ERROR] Exception occurred {"message":"Validation failed","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":91,"code":500,"trace":"#0 {main}","url":"\/test-validation","method":"POST","user_agent":"curl\/8.17.0","ip":"::1","timestamp":"2025-11-12 21:13:59"}

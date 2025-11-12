@@ -18,9 +18,7 @@ class UserController extends Controller {
     public function show($id) {
         $user = User::find($id);
         if (!$user) {
-            http_response_code(404);
-            echo "User not found";
-            return;
+            abort(404, 'User not found');
         }
         $this->view('users.show', ['user' => $user, 'layout' => 'layouts.app']);
     }
@@ -37,43 +35,31 @@ class UserController extends Controller {
     
     public function store() {
         $data = $_POST;
-        
-        $validator = new Validator($data, [
+
+        // Usar el helper validate que lanza ValidationException automáticamente
+        validate($data, [
             'name' => 'required|min:2|max:255',
             'email' => 'required|email',
             'password' => 'required|min:6'
         ]);
-        
-        if (!$validator->validate()) {
-            $this->view('users.create', ['errors' => $validator->errors(), 'old' => $data, 'layout' => 'layouts.app']);
-            return;
-        }
-        
+
         User::create($data);
-        
         $this->redirect('/users');
     }
     
     public function update($id) {
         $data = $_POST;
         $user = User::find($id);
-        
+
         if (!$user) {
-            http_response_code(404);
-            echo "User not found";
-            return;
+            abort(404, 'User not found');
         }
-        
-        $validator = new Validator($data, [
+
+        validate($data, [
             'name' => 'required|min:2|max:255',
             'email' => 'required|email'
         ]);
-        
-        if (!$validator->validate()) {
-            $this->view('users.edit', ['user' => $user, 'errors' => $validator->errors(), 'old' => $data, 'layout' => 'layouts.app']);
-            return;
-        }
-        
+
         $user->update($id, $data);
         $this->redirect('/users/' . $id);
     }

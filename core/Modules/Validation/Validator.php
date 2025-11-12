@@ -14,13 +14,25 @@ class Validator {
     public function validate() {
         foreach ($this->rules as $field => $ruleString) {
             $rules = explode('|', $ruleString);
-            
+
             foreach ($rules as $rule) {
                 $this->validateRule($field, $rule);
             }
         }
-        
+
         return empty($this->errors);
+    }
+
+    public function validateOrFail() {
+        if (!$this->validate()) {
+            throw new \Nexus\Modules\Exception\ValidationException(
+                'Validation failed',
+                $this->errors(),
+                $this->data
+            );
+        }
+
+        return true;
     }
     
     private function validateRule($field, $rule) {

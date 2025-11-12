@@ -18,6 +18,7 @@ class Router {
         $this->middlewareInstance->add('cors', Middleware::cors());
         $this->middlewareInstance->add('log', Middleware::log());
         $this->middlewareInstance->add('sanitize', Middleware::sanitize());
+        $this->middlewareInstance->add('throttle', Middleware::throttle());
         
         // Registrar grupos de middlewares
         $this->middlewareInstance->group('web', ['log', 'sanitize']);
@@ -63,10 +64,9 @@ class Router {
                 ];
             }
         }
-        
+
         return null;
     }
-    
     public function runMiddleware($middleware, $params = []) {
         if (empty($middleware)) {
             return true;

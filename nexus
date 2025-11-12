@@ -9,6 +9,7 @@
 
 // Cargar el autoloader de Composer
 require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/core/helpers.php';
 
 // Inicializar la aplicación
 $app = new \Nexus\Bootstrap\Application();

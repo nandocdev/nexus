@@ -109,6 +109,25 @@ $router->add('GET', '/test', function() {
     echo "<p>Timestamp: " . date('Y-m-d H:i:s') . "</p>";
 }, 'test', ['web']);
 
+/**
+ * Ruta de prueba de errores
+ */
+$router->add('GET', '/test-error', function() {
+    throw new \Exception('This is a test error for demonstration purposes');
+}, 'test.error', ['web']);
+
+/**
+ * Ruta de prueba de validación
+ */
+$router->add('POST', '/test-validation', function() {
+    validate($_POST, [
+        'name' => 'required|min:3',
+        'email' => 'required|email',
+    ]);
+
+    echo json_encode(['success' => true, 'message' => 'Validation passed']);
+}, 'test.validation', ['api']);
+
 // =====================================================================================
 // RUTAS DE ERROR (Fallback)
 // =====================================================================================

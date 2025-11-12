@@ -7,10 +7,14 @@ abstract class Command
     public $description;
     public $arguments = [];
     public $options = [];
+    protected $optionDefinitions = [];
 
     public function __construct()
     {
         $this->configure();
+        if (method_exists($this, 'configureOptions')) {
+            $this->configureOptions();
+        }
     }
 
     abstract protected function configure();
@@ -88,5 +92,19 @@ abstract class Command
         $defaultText = $default ? 'Y/n' : 'y/N';
         $answer = $this->ask($question . " ({$defaultText})", $default ? 'y' : 'n');
         return strtolower($answer) === 'y' || ($default && $answer === '');
+    }
+
+    protected function addOption($name, $shortcut = null, $description = '', $default = null)
+    {
+        $this->optionDefinitions[$name] = [
+            'shortcut' => $shortcut,
+            'description' => $description,
+            'default' => $default,
+        ];
+    }
+
+    public function getOptionDefinitions()
+    {
+        return $this->optionDefinitions;
     }
 }

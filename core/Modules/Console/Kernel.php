@@ -37,6 +37,7 @@ class Kernel
         $this->commands['config:cache'] = new \Nexus\Modules\Console\Commands\ConfigCacheCommand();
         $this->commands['route:list'] = new \Nexus\Modules\Console\Commands\RouteListCommand();
         $this->commands['test'] = new \Nexus\Modules\Console\Commands\TestCommand();
+        $this->commands['logs'] = new \Nexus\Modules\Console\Commands\LogsCommand();
     }
 
     public function registerCustomCommands()

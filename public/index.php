@@ -1,6 +1,7 @@
 <?php
 // public/index.php
 require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../core/helpers.php';
 
 
 // Cargar y validar variables de entorno
@@ -55,30 +56,44 @@ $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $route = $router->match($method, $path);
 
 if ($route) {
-    if (!$router->runMiddleware($route['middleware'], $route['params'])) {
-        // Middleware failed, response already sent
-        exit;
-    }
-    
-    $handler = $route['handler'];
-    
-    if (is_callable($handler)) {
-        // Handler is a closure or callable
-        call_user_func_array($handler, $route['params']);
-    } else {
-        // Handler is a controller string
-        list($controller, $method) = explode('@', $handler);
-        $controllerClass = "App\\Controllers\\{$controller}";
-
-        if (class_exists($controllerClass)) {
-            $instance = new $controllerClass();
-            call_user_func_array([$instance, $method], $route['params']);
-        } else {
-            http_response_code(404);
-            echo "Controller not found";
+    try {
+        if (!$router->runMiddleware($route['middleware'], $route['params'])) {
+            // Middleware failed, response already sent
+            exit;
         }
+
+        $handler = $route['handler'];
+
+        if (is_callable($handler)) {
+            // Handler is a closure or callable
+            call_user_func_array($handler, $route['params']);
+        } else {
+            // Handler is a controller string
+            list($controller, $method) = explode('@', $handler);
+            $controllerClass = "App\\Controllers\\{$controller}";
+
+            if (class_exists($controllerClass)) {
+                $instance = new $controllerClass();
+                call_user_func_array([$instance, $method], $route['params']);
+            } else {
+                throw new \Nexus\Modules\Exception\RouteNotFoundException(
+                    "Controller '{$controller}' not found",
+                    $method,
+                    $path
+                );
+            }
+        }
+    } catch (\Nexus\Modules\Exception\HttpException $e) {
+        // HTTP exceptions are handled by the exception handler
+        throw $e;
+    } catch (\Exception $e) {
+        // Convert other exceptions to HTTP exceptions
+        throw new \Nexus\Modules\Exception\HttpException(500, $e->getMessage(), $e);
     }
 } else {
-    http_response_code(404);
-    echo "Route not found";
+    throw new \Nexus\Modules\Exception\RouteNotFoundException(
+        'The requested resource was not found',
+        $method,
+        $path
+    );
 }
