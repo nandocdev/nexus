@@ -17,3 +17,6 @@
 [2025-11-12 20:38:38] [INFO] Response completed in 0.18ms
 [2025-11-12 20:39:16] [INFO] Request: GET /login
 [2025-11-12 20:39:16] [INFO] Response completed in 0.24ms
+[2025-11-12 20:48:28] [INFO] Request: GET /users/create
+[2025-11-12 20:48:28] [INFO] Request: GET /login
+[2025-11-12 20:48:28] [INFO] Response completed in 0.19ms

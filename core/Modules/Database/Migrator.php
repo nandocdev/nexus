@@ -1,6 +1,7 @@
 <?php
 namespace Nexus\Modules\Database;
-
+use Nexus\Modules\Database\Database;
+use Nexus\Modules\Logger\Logger;
 class Migrator {
     private $db;
     private $migrationsTable = 'migrations';

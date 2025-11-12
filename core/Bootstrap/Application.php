@@ -18,6 +18,7 @@ class Application {
         $this->registerProvider(\Nexus\Modules\Auth\AuthServiceProvider::class);
         $this->registerProvider(\Nexus\Modules\Validation\ValidationServiceProvider::class);
         $this->registerProvider(\Nexus\Modules\Logging\LoggingServiceProvider::class);
+        $this->registerProvider(\Nexus\Modules\Console\ConsoleServiceProvider::class);
     }
     
     public function registerProvider(string $providerClass): void {

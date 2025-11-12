@@ -1,60 +1,153 @@
-# Mi Framework PHP
+# Nexus Framework
 
-Una base sólida para proyectos profesionales en PHP sin frameworks externos.
+Un framework PHP profesional y modular construido desde cero sin dependencias externas pesadas. Diseñado para ser ligero, extensible y educativo.
 
-## Características
+## 🚀 Características
 
-- **Autoloader PSR-4**: Carga automática de clases.
-- **Sistema de Configuración**: Configuraciones flexibles con variables de entorno.
-- **Base de Datos**: Soporte para MySQL, PostgreSQL y SQLite con PDO.
-- **Modelo ORM**: CRUD completo con fillable, hidden y validaciones.
-- **Router**: Enrutamiento con parámetros y middleware.
-- **Middleware**: Sistema de middleware para autenticación y más.
-- **Autenticación**: Sistema de login/logout con sesiones.
-- **Validación**: Validación de datos con reglas personalizables.
-- **Logging**: Sistema de logs para debugging y monitoreo.
-- **Migraciones**: Gestión de esquema de base de datos.
-- **Seeders**: Población de datos de prueba.
-- **Vistas**: Sistema de templates con layouts.
-- **Contenedor DI**: Inyección de dependencias básica.
+### 🏗️ Arquitectura
+- **MVC Pattern**: Separación clara de responsabilidades
+- **PSR-4 Autoloading**: Usando Composer para carga automática de clases
+- **Service Providers**: Arquitectura modular con proveedores de servicios
+- **Dependency Injection**: Contenedor DI para gestión de dependencias
 
-## Instalación
+### 🗄️ Base de Datos
+- **Multi-driver Support**: MySQL, PostgreSQL y SQLite con PDO
+- **Query Builder**: Constructor de consultas fluido
+- **ORM Básico**: Modelo con CRUD completo, fillable, hidden y validaciones
+- **Migrations**: Sistema de migraciones para gestión de esquema
+- **Seeders**: Población automática de datos de prueba
 
-1. Clona el repositorio.
-2. Configura tu base de datos en `app/Config/database.php` o en el archivo `.env`.
-3. Ejecuta las migraciones (si implementas el comando).
-4. Inicia el servidor: `php -S localhost:8000 -t public/`
+### 🔐 Seguridad y Autenticación
+- **Session-based Auth**: Sistema de autenticación con sesiones
+- **Password Hashing**: Hashing seguro de contraseñas
+- **Middleware Protection**: Protección de rutas con middleware
+- **Input Sanitization**: Sanitización automática de entrada
 
-## Estructura del Proyecto
+### 🛣️ Routing y Middleware
+- **Flexible Router**: Enrutamiento con parámetros dinámicos
+- **Middleware Pipeline**: Sistema de middleware encadenable
+- **Built-in Middleware**:
+  - `auth`: Protección de rutas autenticadas
+  - `guest`: Restricción para usuarios no autenticados
+  - `log`: Logging automático de requests
+  - `sanitize`: Sanitización de input
+  - `cors`: Configuración CORS
+  - `throttle`: Rate limiting
+  - `validate`: Validación de datos
+
+### ✅ Validación y Logging
+- **Custom Validator**: Sistema de validación extensible con reglas personalizables
+- **File-based Logging**: Sistema de logs configurable
+- **Error Handling**: Manejo graceful de errores
+
+### 🎨 Frontend
+- **Template Engine**: Sistema de vistas con layouts y herencia
+- **Asset Management**: Estructura organizada para CSS/JS
+- **Bootstrap Integration**: Framework CSS incluido
+
+### 🧪 Testing
+- **Unit Tests**: Suite de pruebas para componentes core
+- **Test Helpers**: Utilidades para testing automatizado
+
+## 📋 Requisitos
+
+- **PHP**: 8.0 o superior
+- **Composer**: Para gestión de dependencias
+- **Base de Datos**: MySQL, PostgreSQL o SQLite
+- **Servidor Web**: Apache/Nginx o servidor de desarrollo PHP
+
+## 🛠️ Instalación
+
+1. **Clona el repositorio**
+   ```bash
+   git clone <repository-url>
+   cd scheduler
+   ```
+
+2. **Instala dependencias con Composer**
+   ```bash
+   composer install
+   ```
+
+3. **Configura el entorno**
+   ```bash
+   cp .env.example .env
+   ```
+   Edita `.env` con tus configuraciones:
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=localhost
+   DB_PORT=3306
+   DB_NAME=scheduler_db
+   DB_USER=your_user
+   DB_PASSWORD=your_password
+
+   APP_DEBUG=true
+   APP_KEY=your_secret_key
+   ```
+
+4. **Configura la base de datos**
+   - Crea la base de datos
+   - Ejecuta las migraciones (implementa el comando CLI si es necesario)
+
+5. **Inicia el servidor de desarrollo**
+   ```bash
+   php -S localhost:8080 -t public/
+   ```
+
+## 📁 Estructura del Proyecto
 
 ```
-app/
-├── Config/          # Configuraciones
-├── Controllers/     # Controladores
-├── Core/           # Núcleo del framework
-├── Models/         # Modelos
-└── Views/          # Vistas
-public/
-└── index.php       # Punto de entrada
-storage/
-└── logs/           # Logs
-vendor/             # Autoloader de Composer
+scheduler/
+├── app/                    # Código de la aplicación
+│   ├── Config/            # Configuraciones específicas de la app
+│   ├── Controllers/       # Controladores MVC
+│   ├── Models/           # Modelos de datos
+│   ├── Views/            # Vistas y templates
+│   └── Migrations/       # Migraciones de BD
+├── core/                  # Núcleo del framework (Nexus namespace)
+│   ├── Bootstrap/        # Inicialización y Application
+│   └── Modules/          # Módulos del framework
+│       ├── Auth/         # Autenticación
+│       ├── Config/       # Configuración
+│       ├── Database/     # Base de datos
+│       ├── Http/         # HTTP, Router, Middleware
+│       ├── Logging/      # Sistema de logs
+│       └── Validation/   # Validación
+├── public/               # Punto de entrada público
+│   └── index.php        # Archivo principal
+├── router/              # Definiciones de rutas
+│   └── web.php         # Rutas web
+├── storage/             # Archivos generados
+│   ├── logs/           # Archivos de log
+│   └── migrations/     # Estado de migraciones
+├── tests/              # Suite de pruebas
+│   └── TestSuite.php   # Ejecutor de tests
+├── vendor/             # Dependencias de Composer
+├── .env               # Variables de entorno
+├── composer.json      # Configuración de Composer
+└── README.md          # Esta documentación
 ```
 
-## Uso Básico
+## 🎯 Uso Básico
 
 ### Crear un Modelo
 
 ```php
 <?php
-namespace Scheduler\Models;
+namespace App\Models;
 
-use Scheduler\Core\Model;
+use Nexus\Modules\Database\Model;
 
 class User extends Model {
     protected $table = 'users';
     protected $fillable = ['name', 'email', 'password'];
     protected $hidden = ['password'];
+
+    // Relaciones
+    public function posts() {
+        return $this->hasMany(Post::class);
+    }
 }
 ```
 
@@ -62,49 +155,229 @@ class User extends Model {
 
 ```php
 <?php
-namespace Scheduler\Controllers;
+namespace App\Controllers;
 
-use Scheduler\Core\Controller;
+use Nexus\Modules\Http\Controller;
+use App\Models\User;
 
 class UserController extends Controller {
     public function index() {
         $users = User::all();
-        $this->view('users.index', ['users' => $users]);
+        $this->view('users/index', [
+            'users' => $users,
+            'layout' => 'layouts/app'
+        ]);
+    }
+
+    public function store() {
+        $data = $_POST;
+
+        // Validación con middleware
+        // (configurado en router/web.php)
+
+        $user = User::create($data);
+        $this->redirect('/users');
     }
 }
 ```
 
 ### Definir Rutas
 
-En `public/index.php`:
+En `router/web.php`:
 
 ```php
-$router->add('GET', '/users', 'UserController@index', 'users.index');
+<?php
+// Rutas públicas
+$router->add('GET', '/', 'HomeController@index', 'home', ['web']);
+
+// Rutas protegidas
+$router->add('GET', '/users', 'UserController@index', 'users.index', ['web', 'auth']);
+$router->add('POST', '/users', 'UserController@store', 'users.store', [
+    'web',
+    'auth',
+    'validate' => [
+        'name' => 'required|min:2|max:255',
+        'email' => 'required|email',
+        'password' => 'required|min:6'
+    ]
+]);
+
+// Rutas de API
+$router->add('GET', '/api/users', 'ApiController@index', 'api.users', ['api', 'auth']);
+
+// Rutas con closures
+$router->add('GET', '/health', function() {
+    header('Content-Type: application/json');
+    echo json_encode([
+        'status' => 'ok',
+        'timestamp' => date('c'),
+        'version' => '1.0.0'
+    ]);
+}, 'health', ['cors']);
+```
+
+### Middleware Personalizado
+
+```php
+// En public/index.php
+$middleware->add('admin', function($next) {
+    session_start();
+    if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
+        http_response_code(403);
+        echo "Access denied";
+        exit;
+    }
+    return $next();
+});
 ```
 
 ### Validación
 
 ```php
-$validator = new Validator($data, [
+use Nexus\Modules\Validation\Validator;
+
+$validator = new Validator($_POST, [
     'name' => 'required|min:2|max:255',
-    'email' => 'required|email'
+    'email' => 'required|email',
+    'password' => 'required|min:6',
+    'age' => 'numeric|min:18'
 ]);
 
 if (!$validator->validate()) {
-    // Manejar errores
+    $errors = $validator->errors();
+    // Manejar errores de validación
 }
 ```
 
-## Contribuir
+### Sistema de Logs
 
-Este proyecto es una base para aprender y construir. Siéntete libre de extenderlo con más funcionalidades como:
-- API REST
-- Caché
-- Cola de trabajos
-- Tests automatizados
-- Más validaciones
-- Internacionalización
+```php
+use Nexus\Modules\Logging\Logger;
 
-## Licencia
+Logger::info("Usuario creado: " . $user->id);
+Logger::error("Error de base de datos: " . $e->getMessage());
+Logger::warning("Intento de acceso no autorizado");
+```
 
-Este proyecto es de código abierto y gratuito.
+## 🧪 Testing
+
+Ejecuta la suite de pruebas:
+
+```bash
+php tests/TestSuite.php
+```
+
+Las pruebas incluyen validación de:
+- Sistema de configuración
+- Validador de datos
+- Router y rutas
+
+## 🌐 API Endpoints
+
+### Autenticación
+- `GET /login` - Formulario de login
+- `POST /login` - Procesar login
+- `POST /logout` - Cerrar sesión
+
+### Usuarios
+- `GET /users` - Listar usuarios (requiere auth)
+- `GET /users/create` - Formulario crear usuario
+- `POST /users` - Crear usuario
+- `GET /users/{id}` - Ver usuario
+- `GET /users/{id}/edit` - Formulario editar
+- `PUT /users/{id}` - Actualizar usuario
+- `DELETE /users/{id}` - Eliminar usuario
+
+### API REST
+- `GET /api/users` - Listar usuarios (JSON)
+- `POST /api/users` - Crear usuario (JSON)
+- `GET /api/users/{id}` - Ver usuario (JSON)
+- `PUT /api/users/{id}` - Actualizar usuario (JSON)
+- `DELETE /api/users/{id}` - Eliminar usuario (JSON)
+
+### Utilidades
+- `GET /health` - Health check (JSON)
+- `GET /test` - Página de prueba
+
+## 🔧 Configuración Avanzada
+
+### Variables de Entorno
+
+El sistema soporta variables de entorno con prefijo `APP_`:
+
+```env
+APP_DEBUG=true
+APP_NAME="Mi Aplicación"
+APP_URL=http://localhost:8080
+```
+
+### Base de Datos
+
+Configuración en `app/Config/database.php`:
+
+```php
+return [
+    'default' => env('DB_CONNECTION', 'mysql'),
+    'connections' => [
+        'mysql' => [
+            'host' => env('DB_HOST', 'localhost'),
+            'database' => env('DB_NAME', 'scheduler'),
+            'username' => env('DB_USER', 'root'),
+            'password' => env('DB_PASSWORD', ''),
+            'charset' => 'utf8mb4',
+        ],
+        // ... otras conexiones
+    ]
+];
+```
+
+## 🚀 Despliegue
+
+### Producción
+1. Configura variables de entorno de producción
+2. Desactiva `APP_DEBUG`
+3. Configura permisos apropiados en `storage/`
+4. Usa un servidor web (Apache/Nginx) en lugar de `php -S`
+
+### Docker (Opcional)
+```dockerfile
+FROM php:8.1-apache
+COPY . /var/www/html
+RUN composer install --no-dev --optimize-autoloader
+RUN chown -R www-data:www-data /var/www/html/storage
+```
+
+## 🤝 Contribuir
+
+Este proyecto es educativo y extensible. Áreas para contribuir:
+
+- **CLI Commands**: Comandos artisan-like para migraciones, seeders, etc.
+- **Caching System**: Redis/Memcached integration
+- **Queue System**: Procesamiento asíncrono de jobs
+- **API Documentation**: Swagger/OpenAPI integration
+- **Internationalization**: Sistema i18n
+- **Advanced Testing**: Más cobertura de tests
+- **Performance**: Optimizaciones y profiling
+
+### Guías de Contribución
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/nueva-funcionalidad`)
+3. Commit tus cambios (`git commit -am 'Agrega nueva funcionalidad'`)
+4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
+5. Abre un Pull Request
+
+## 📄 Licencia
+
+Este proyecto es de código abierto bajo la licencia MIT. Siéntete libre de usarlo, modificarlo y distribuirlo.
+
+## 🙏 Agradecimientos
+
+- Inspirado en frameworks como Laravel y Symfony
+- Construido con PHP 8+ y mejores prácticas
+- Diseñado para ser educativo y profesional
+
+---
+
+**Versión**: 1.0.0
+**PHP**: 8.0+
+**Estado**: Estable y en desarrollo activo

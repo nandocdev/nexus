@@ -1,0 +1,24 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * Nexus Framework CLI
+ *
+ * Command Line Interface for Nexus Framework
+ */
+
+// Cargar el autoloader de Composer
+require_once __DIR__ . '/vendor/autoload.php';
+
+// Inicializar la aplicación
+$app = new \Nexus\Bootstrap\Application();
+$app->boot();
+
+// Obtener el kernel de consola
+$kernel = $app->make('console.kernel');
+
+// Registrar comandos personalizados ahora que el autoloader está disponible
+$kernel->registerCustomCommands();
+
+// Ejecutar el comando
+$kernel->handle($argv);
