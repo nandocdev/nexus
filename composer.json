@@ -1,0 +1,18 @@
+{
+    "name": "ferncastillo/scheduler",
+    "version": "1.0",
+    "autoload": {
+        "psr-4": {
+            "Nexus\\": "core/",
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Fernando Castillo",
+            "email": "ferncastillov@outlook.com"
+        }
+    ],
+    "require": {}
+}
+
