@@ -11,6 +11,19 @@ class Database {
     
     private function __construct() {
         $config = Config::get('database');
+        if (!is_array($config)) {
+            // Si no es array, reconstruir desde valores individuales
+            $config = [
+                'driver' => Config::get('driver'),
+                'host' => Config::get('host'),
+                'port' => Config::get('port'),
+                'database' => Config::get('database'),
+                'username' => Config::get('username'),
+                'password' => Config::get('password'),
+                'options' => Config::get('options', [])
+            ];
+        }
+        
         $driver = $config['driver'] ?? 'mysql';
         
         try {
@@ -47,8 +60,8 @@ class Database {
             $stmt->execute($params);
             return $stmt;
         } catch (PDOException $e) {
-            Logger::error("Database query failed: " . $e->getMessage() . " SQL: $sql");
-            throw new Exception("Database query failed");
+            // Logger::error("Database query failed: " . $e->getMessage() . " SQL: $sql");
+            throw new Exception("Database query failed: " . $e->getMessage() . " SQL: $sql");
         }
     }
     
@@ -66,5 +79,9 @@ class Database {
     
     public function rollback() {
         return $this->pdo->rollback();
+    }
+    
+    public function raw($sql, $params = []) {
+        return $this->query($sql, $params);
     }
 }

@@ -20,7 +20,7 @@ class Config {
     public static function load($file) {
         self::init();
         
-        $path = __DIR__ . "/../Config/{$file}.php";
+        $path = __DIR__ . "/../../../app/Config/{$file}.php";
         if (file_exists($path)) {
             $config = require $path;
             
@@ -55,21 +55,16 @@ class Config {
     }
     
     public static function get($key, $default = null) {
-        // Primero buscar en variables de entorno (prefijo APP_)
-        $envKey = 'APP_' . strtoupper(str_replace('.', '_', $key));
-        $envValue = Env::get($envKey);
-        
-        if ($envValue !== null) {
-            return $envValue;
-        }
-        
-        // Luego buscar en configuración normal
+        // Primero buscar en configuración cargada
         $keys = explode('.', $key);
         $value = self::$config;
         
         foreach ($keys as $k) {
             if (!isset($value[$k])) {
-                return $default;
+                // Si no está en configuración, buscar en variables de entorno
+                $envKey = strtoupper(str_replace('.', '_', $key));
+                $envValue = Env::get($envKey);
+                return $envValue !== null ? $envValue : $default;
             }
             $value = $value[$k];
         }
