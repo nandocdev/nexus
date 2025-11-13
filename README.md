@@ -13,8 +13,8 @@ Un framework PHP profesional y modular construido desde cero sin dependencias ex
 ### 🗄️ Base de Datos
 - **Multi-driver Support**: MySQL, PostgreSQL y SQLite con PDO
 - **Query Builder**: Constructor de consultas fluido
-- **ORM Básico**: Modelo con CRUD completo, fillable, hidden y validaciones
-- **Migrations**: Sistema de migraciones para gestión de esquema
+- **ORM Avanzado**: Modelo con CRUD completo, fillable, hidden, validaciones y relaciones (hasMany, belongsTo, etc.)
+- **Migrations**: Sistema de migraciones completo con comandos CLI para gestión de esquema
 - **Seeders**: Población automática de datos de prueba
 
 ### 🔐 Seguridad y Autenticación
@@ -88,7 +88,10 @@ Un framework PHP profesional y modular construido desde cero sin dependencias ex
 
 4. **Configura la base de datos**
    - Crea la base de datos
-   - Ejecuta las migraciones (implementa el comando CLI si es necesario)
+   - Ejecuta las migraciones:
+     ```bash
+     php nexus migrate
+     ```
 
 5. **Inicia el servidor de desarrollo**
    ```bash
@@ -131,7 +134,53 @@ scheduler/
 
 ## 🎯 Uso Básico
 
-### Crear un Modelo
+### Sistema de Migraciones
+
+El framework incluye un sistema completo de migraciones para gestionar el esquema de la base de datos.
+
+**Crear una nueva migración:**
+```bash
+php nexus migrate:create create_users_table
+```
+
+**Ejecutar migraciones:**
+```bash
+php nexus migrate
+```
+
+**Ver estado de migraciones:**
+```bash
+php nexus migrate:status
+```
+
+**Revertir migraciones:**
+```bash
+php nexus migrate:rollback
+```
+
+**Ejemplo de migración:**
+```php
+<?php
+use Nexus\Modules\Database\Migration;
+
+class CreateUsersTable extends Migration {
+    public function up() {
+        $this->createTable('users', function($table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->timestamps();
+        });
+    }
+
+    public function down() {
+        $this->dropTable('users');
+    }
+}
+```
+
+### Relaciones en el ORM
 
 ```php
 <?php
@@ -147,6 +196,27 @@ class User extends Model {
     // Relaciones
     public function posts() {
         return $this->hasMany(Post::class);
+    }
+
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
+}
+
+class Post extends Model {
+    protected $table = 'posts';
+    protected $fillable = ['title', 'content', 'user_id'];
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function tags() {
+        return $this->belongsToMany(Tag::class, 'post_tag');
     }
 }
 ```

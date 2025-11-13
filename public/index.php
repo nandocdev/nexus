@@ -4,10 +4,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../core/helpers.php';
 
 
-// Cargar y validar variables de entorno
+// Cargar configuración
 try {
-    \Nexus\Modules\Config\Config::init();
-    \Nexus\Modules\Config\Config::load('app');
     \Nexus\Modules\Config\Config::load('database');
 } catch (Exception $e) {
     http_response_code(500);
@@ -25,7 +23,7 @@ $router = $app->make('router');
 $middleware = $app->make('middleware');
 
 // Registrar middlewares adicionales personalizados
-$middleware->add('admin', function($next) {
+$middleware->add('admin', function ($next) {
     // Middleware personalizado para administradores
     session_start();
     if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
@@ -36,7 +34,7 @@ $middleware->add('admin', function($next) {
     return $next();
 });
 
-$middleware->add('api', function($next) {
+$middleware->add('api', function ($next) {
     // Middleware para API
     header('Content-Type: application/json');
     header('Access-Control-Allow-Origin: *');
