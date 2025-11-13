@@ -1,8 +1,7 @@
 <?php
 namespace Nexus\Modules\Http;
 
-class Response implements ResponseInterface
-{
+class Response implements ResponseInterface {
     /**
      * The response content.
      *
@@ -39,8 +38,7 @@ class Response implements ResponseInterface
      * @param  array  $headers
      * @return void
      */
-    public function __construct($content = '', $statusCode = 200, array $headers = [])
-    {
+    public function __construct($content = '', $statusCode = 200, array $headers = []) {
         $this->content = $content;
         $this->statusCode = $statusCode;
         $this->headers = $headers;
@@ -55,8 +53,7 @@ class Response implements ResponseInterface
      * @param  array  $headers
      * @return static
      */
-    public static function make($content = '', $statusCode = 200, array $headers = [])
-    {
+    public static function make($content = '', $statusCode = 200, array $headers = []) {
         return new static($content, $statusCode, $headers);
     }
 
@@ -68,8 +65,7 @@ class Response implements ResponseInterface
      * @param  array  $headers
      * @return static
      */
-    public static function json($data, $statusCode = 200, array $headers = [])
-    {
+    public static function json($data, $statusCode = 200, array $headers = []) {
         $headers['Content-Type'] = 'application/json';
 
         return new static(json_encode($data), $statusCode, $headers);
@@ -82,8 +78,7 @@ class Response implements ResponseInterface
      * @param  int  $statusCode
      * @return static
      */
-    public static function redirect($url, $statusCode = 302)
-    {
+    public static function redirect($url, $statusCode = 302) {
         return new static('', $statusCode, ['Location' => $url]);
     }
 
@@ -93,8 +88,7 @@ class Response implements ResponseInterface
      * @param  mixed  $content
      * @return $this
      */
-    public function setContent($content)
-    {
+    public function setContent($content) {
         $this->content = $content;
 
         return $this;
@@ -105,8 +99,7 @@ class Response implements ResponseInterface
      *
      * @return mixed
      */
-    public function getContent()
-    {
+    public function getContent() {
         return $this->content;
     }
 
@@ -116,8 +109,7 @@ class Response implements ResponseInterface
      * @param  int  $statusCode
      * @return $this
      */
-    public function setStatusCode($statusCode)
-    {
+    public function setStatusCode($statusCode) {
         $this->statusCode = $statusCode;
 
         return $this;
@@ -128,8 +120,7 @@ class Response implements ResponseInterface
      *
      * @return int
      */
-    public function getStatusCode()
-    {
+    public function getStatusCode() {
         return $this->statusCode;
     }
 
@@ -140,8 +131,7 @@ class Response implements ResponseInterface
      * @param  string  $value
      * @return $this
      */
-    public function header($key, $value)
-    {
+    public function header($key, $value) {
         $this->headers[$key] = $value;
 
         return $this;
@@ -153,8 +143,7 @@ class Response implements ResponseInterface
      * @param  array  $headers
      * @return $this
      */
-    public function withHeaders(array $headers)
-    {
+    public function withHeaders(array $headers) {
         $this->headers = array_merge($this->headers, $headers);
 
         return $this;
@@ -165,8 +154,7 @@ class Response implements ResponseInterface
      *
      * @return array
      */
-    public function getHeaders()
-    {
+    public function getHeaders() {
         return $this->headers;
     }
 
@@ -182,8 +170,7 @@ class Response implements ResponseInterface
      * @param  bool  $httpOnly
      * @return $this
      */
-    public function cookie($name, $value, $minutes = 0, $path = '/', $domain = '', $secure = false, $httpOnly = true)
-    {
+    public function cookie($name, $value, $minutes = 0, $path = '/', $domain = '', $secure = false, $httpOnly = true) {
         $this->cookies[] = [
             'name' => $name,
             'value' => $value,
@@ -202,8 +189,7 @@ class Response implements ResponseInterface
      *
      * @return array
      */
-    public function getCookies()
-    {
+    public function getCookies() {
         return $this->cookies;
     }
 
@@ -212,8 +198,7 @@ class Response implements ResponseInterface
      *
      * @return void
      */
-    public function send()
-    {
+    public function send() {
         $this->sendHeaders();
         $this->sendCookies();
         $this->sendContent();
@@ -224,8 +209,7 @@ class Response implements ResponseInterface
      *
      * @return void
      */
-    protected function sendHeaders()
-    {
+    protected function sendHeaders() {
         if (headers_sent()) {
             return;
         }
@@ -242,8 +226,7 @@ class Response implements ResponseInterface
      *
      * @return void
      */
-    protected function sendCookies()
-    {
+    protected function sendCookies() {
         foreach ($this->cookies as $cookie) {
             setcookie(
                 $cookie['name'],
@@ -262,8 +245,7 @@ class Response implements ResponseInterface
      *
      * @return void
      */
-    protected function sendContent()
-    {
+    protected function sendContent() {
         echo $this->content;
     }
 
@@ -273,8 +255,7 @@ class Response implements ResponseInterface
      * @param  int  $code
      * @return string
      */
-    public static function getStatusText($code)
-    {
+    public static function getStatusText($code) {
         $statusTexts = [
             100 => 'Continue',
             101 => 'Switching Protocols',

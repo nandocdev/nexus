@@ -1,8 +1,7 @@
 <?php
 namespace Nexus\Modules\Http;
 
-class Request implements RequestInterface
-{
+class Request implements RequestInterface {
     /**
      * The request method.
      *
@@ -91,8 +90,7 @@ class Request implements RequestInterface
      * @param  array|null  $session
      * @return void
      */
-    public function __construct(array $query = [], array $post = [], array $server = [], array $cookies = [], array $files = [], array $session = null)
-    {
+    public function __construct(array $query = [], array $post = [], array $server = [], array $cookies = [], array $files = [], array $session = null) {
         $this->query = $query ?: $_GET;
         $this->post = $post ?: $_POST;
         $this->server = $server ?: $_SERVER;
@@ -115,8 +113,7 @@ class Request implements RequestInterface
      *
      * @return static
      */
-    public static function capture()
-    {
+    public static function capture() {
         return new static($_GET, $_POST, $_SERVER, $_COOKIE, $_FILES, $_SESSION ?? []);
     }
 
@@ -125,8 +122,7 @@ class Request implements RequestInterface
      *
      * @return string
      */
-    public function method()
-    {
+    public function method() {
         return $this->method;
     }
 
@@ -136,8 +132,7 @@ class Request implements RequestInterface
      * @param  string  $method
      * @return bool
      */
-    public function isMethod($method)
-    {
+    public function isMethod($method) {
         return strtoupper($this->method) === strtoupper($method);
     }
 
@@ -146,8 +141,7 @@ class Request implements RequestInterface
      *
      * @return string
      */
-    public function uri()
-    {
+    public function uri() {
         return $this->uri;
     }
 
@@ -156,8 +150,7 @@ class Request implements RequestInterface
      *
      * @return string
      */
-    public function path()
-    {
+    public function path() {
         return $this->path;
     }
 
@@ -166,8 +159,7 @@ class Request implements RequestInterface
      *
      * @return string
      */
-    public function queryString()
-    {
+    public function queryString() {
         return $this->server['QUERY_STRING'] ?? '';
     }
 
@@ -178,8 +170,7 @@ class Request implements RequestInterface
      * @param  mixed  $default
      * @return mixed
      */
-    public function query($key = null, $default = null)
-    {
+    public function query($key = null, $default = null) {
         if ($key === null) {
             return $this->query;
         }
@@ -194,8 +185,7 @@ class Request implements RequestInterface
      * @param  mixed  $default
      * @return mixed
      */
-    public function input($key = null, $default = null)
-    {
+    public function input($key = null, $default = null) {
         if ($key === null) {
             return array_merge($this->query, $this->post);
         }
@@ -208,8 +198,7 @@ class Request implements RequestInterface
      *
      * @return array
      */
-    public function all()
-    {
+    public function all() {
         return array_merge($this->query, $this->post);
     }
 
@@ -219,8 +208,7 @@ class Request implements RequestInterface
      * @param  array  $keys
      * @return array
      */
-    public function only(array $keys)
-    {
+    public function only(array $keys) {
         $results = [];
 
         foreach ($keys as $key) {
@@ -236,8 +224,7 @@ class Request implements RequestInterface
      * @param  array  $keys
      * @return array
      */
-    public function except(array $keys)
-    {
+    public function except(array $keys) {
         $keys = array_flip($keys);
 
         return array_diff_key($this->all(), $keys);
@@ -249,8 +236,7 @@ class Request implements RequestInterface
      * @param  string  $key
      * @return bool
      */
-    public function has($key)
-    {
+    public function has($key) {
         return isset($this->post[$key]) || isset($this->query[$key]);
     }
 
@@ -261,8 +247,7 @@ class Request implements RequestInterface
      * @param  mixed  $default
      * @return mixed
      */
-    public function header($key, $default = null)
-    {
+    public function header($key, $default = null) {
         $headers = $this->headers();
 
         $key = str_replace('_', '-', strtolower($key));
@@ -276,8 +261,7 @@ class Request implements RequestInterface
      *
      * @return array
      */
-    public function headers()
-    {
+    public function headers() {
         if ($this->headers) {
             return $this->headers;
         }
@@ -298,8 +282,7 @@ class Request implements RequestInterface
      *
      * @return string|null
      */
-    public function contentType()
-    {
+    public function contentType() {
         return $this->header('Content-Type') ?: $this->header('content-type');
     }
 
@@ -308,8 +291,7 @@ class Request implements RequestInterface
      *
      * @return bool
      */
-    public function ajax()
-    {
+    public function ajax() {
         return $this->header('X-Requested-With') === 'XMLHttpRequest';
     }
 
@@ -318,8 +300,7 @@ class Request implements RequestInterface
      *
      * @return bool
      */
-    public function isJson()
-    {
+    public function isJson() {
         return strpos($this->contentType() ?? '', 'application/json') === 0;
     }
 
@@ -328,8 +309,7 @@ class Request implements RequestInterface
      *
      * @return array|null
      */
-    public function json()
-    {
+    public function json() {
         if (!$this->isJson()) {
             return null;
         }
@@ -344,8 +324,7 @@ class Request implements RequestInterface
      *
      * @return string
      */
-    public function getContent()
-    {
+    public function getContent() {
         if ($this->body === null) {
             $this->body = file_get_contents('php://input');
         }
@@ -360,8 +339,7 @@ class Request implements RequestInterface
      * @param  mixed  $default
      * @return mixed
      */
-    public function cookie($key, $default = null)
-    {
+    public function cookie($key, $default = null) {
         return $this->cookies[$key] ?? $default;
     }
 
@@ -370,8 +348,7 @@ class Request implements RequestInterface
      *
      * @return array
      */
-    public function cookies()
-    {
+    public function cookies() {
         return $this->cookies;
     }
 
@@ -382,8 +359,7 @@ class Request implements RequestInterface
      * @param  mixed  $default
      * @return mixed
      */
-    public function session($key = null, $default = null)
-    {
+    public function session($key = null, $default = null) {
         if ($key === null) {
             return $this->session;
         }
@@ -397,8 +373,7 @@ class Request implements RequestInterface
      * @param  string  $key
      * @return mixed
      */
-    public function file($key)
-    {
+    public function file($key) {
         return $this->files[$key] ?? null;
     }
 
@@ -407,8 +382,7 @@ class Request implements RequestInterface
      *
      * @return array
      */
-    public function files()
-    {
+    public function files() {
         return $this->files;
     }
 
@@ -417,8 +391,7 @@ class Request implements RequestInterface
      *
      * @return string|null
      */
-    public function userAgent()
-    {
+    public function userAgent() {
         return $this->header('User-Agent');
     }
 
@@ -427,11 +400,10 @@ class Request implements RequestInterface
      *
      * @return string|null
      */
-    public function ip()
-    {
+    public function ip() {
         return $this->server['REMOTE_ADDR'] ??
-               $this->server['HTTP_X_FORWARDED_FOR'] ??
-               $this->server['HTTP_CLIENT_IP'] ?? null;
+            $this->server['HTTP_X_FORWARDED_FOR'] ??
+            $this->server['HTTP_CLIENT_IP'] ?? null;
     }
 
     /**
@@ -439,8 +411,7 @@ class Request implements RequestInterface
      *
      * @return bool
      */
-    public function secure()
-    {
+    public function secure() {
         return isset($this->server['HTTPS']) && $this->server['HTTPS'] === 'on';
     }
 
@@ -449,8 +420,7 @@ class Request implements RequestInterface
      *
      * @return string
      */
-    public function host()
-    {
+    public function host() {
         return $this->server['HTTP_HOST'] ?? 'localhost';
     }
 
@@ -459,8 +429,7 @@ class Request implements RequestInterface
      *
      * @return string
      */
-    public function fullUrl()
-    {
+    public function fullUrl() {
         $scheme = $this->secure() ? 'https' : 'http';
         $host = $this->host();
 

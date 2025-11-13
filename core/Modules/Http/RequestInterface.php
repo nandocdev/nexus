@@ -1,8 +1,7 @@
 <?php
 namespace Nexus\Modules\Http;
 
-interface RequestInterface
-{
+interface RequestInterface {
     /**
      * Get the request method.
      *

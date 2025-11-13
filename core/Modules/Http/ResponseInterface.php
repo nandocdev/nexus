@@ -1,8 +1,7 @@
 <?php
 namespace Nexus\Modules\Http;
 
-interface ResponseInterface
-{
+interface ResponseInterface {
     /**
      * Set the response content.
      *

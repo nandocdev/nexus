@@ -33,7 +33,7 @@ class ApiController extends Controller {
         try {
             // Usar query builder avanzado con relaciones
             $users = User::query()
-                ->with(['posts' => function($query) {
+                ->with(['posts' => function ($query) {
                     $query->where('published', true)->limit(5);
                 }])
                 ->active()
