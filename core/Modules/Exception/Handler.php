@@ -4,8 +4,7 @@ namespace Nexus\Modules\Exception;
 use Nexus\Modules\Logging\Logger;
 use Throwable;
 
-class Handler extends ExceptionHandler
-{
+class Handler extends ExceptionHandler {
     /**
      * A list of the exception types that are not reported.
      *
@@ -29,8 +28,7 @@ class Handler extends ExceptionHandler
      * @param  \Throwable  $exception
      * @return void
      */
-    public function report(Throwable $exception)
-    {
+    public function report(Throwable $exception) {
         if ($this->shouldntReport($exception)) {
             return;
         }
@@ -48,8 +46,7 @@ class Handler extends ExceptionHandler
      * @param  \Throwable  $exception
      * @return bool
      */
-    protected function shouldntReport(Throwable $exception)
-    {
+    protected function shouldntReport(Throwable $exception) {
         foreach ($this->dontReport as $type) {
             if ($exception instanceof $type) {
                 return true;
@@ -65,8 +62,7 @@ class Handler extends ExceptionHandler
      * @param  \Throwable  $exception
      * @return array
      */
-    protected function buildExceptionContext(Throwable $exception)
-    {
+    protected function buildExceptionContext(Throwable $exception) {
         return [
             'message' => $exception->getMessage(),
             'file' => $exception->getFile(),
@@ -87,11 +83,10 @@ class Handler extends ExceptionHandler
      * @param  \Throwable  $exception
      * @return mixed
      */
-    public function render(Throwable $exception)
-    {
+    public function render(Throwable $exception) {
         // Check if it's an AJAX request
         $isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
-                 strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+            strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
 
         if ($isAjax) {
             return $this->renderJsonResponse($exception);
@@ -106,8 +101,7 @@ class Handler extends ExceptionHandler
      * @param  \Throwable  $exception
      * @return string
      */
-    protected function renderJsonResponse(Throwable $exception)
-    {
+    protected function renderJsonResponse(Throwable $exception) {
         $statusCode = $this->getHttpStatusCode($exception);
 
         http_response_code($statusCode);
@@ -137,8 +131,7 @@ class Handler extends ExceptionHandler
      * @param  \Throwable  $exception
      * @return string
      */
-    protected function renderHtmlResponse(Throwable $exception)
-    {
+    protected function renderHtmlResponse(Throwable $exception) {
         $statusCode = $this->getHttpStatusCode($exception);
 
         http_response_code($statusCode);
@@ -156,8 +149,7 @@ class Handler extends ExceptionHandler
      * @param  \Throwable  $exception
      * @return string
      */
-    protected function renderDebugPage(Throwable $exception)
-    {
+    protected function renderDebugPage(Throwable $exception) {
         $title = 'Exception Occurred';
         $message = htmlspecialchars($exception->getMessage());
         $file = htmlspecialchars($exception->getFile());
@@ -201,8 +193,7 @@ HTML;
      * @param  int  $statusCode
      * @return string
      */
-    protected function renderErrorPage($statusCode)
-    {
+    protected function renderErrorPage($statusCode) {
         $messages = [
             400 => 'Bad Request',
             401 => 'Unauthorized',
@@ -242,15 +233,14 @@ HTML;
      * @param  \Throwable  $exception
      * @return int
      */
-    protected function getHttpStatusCode(Throwable $exception)
-    {
+    protected function getHttpStatusCode(Throwable $exception) {
         // Map common exceptions to HTTP status codes
         $exceptionMap = [
             \InvalidArgumentException::class => 400,
-            \Nexus\Modules\Auth\AuthenticationException::class => 401,
-            \Nexus\Modules\Auth\AuthorizationException::class => 403,
-            \Nexus\Modules\Http\RouteNotFoundException::class => 404,
-            \Nexus\Modules\Validation\ValidationException::class => 422,
+            \Nexus\Modules\Exception\AuthenticationException::class => 401,
+            \Nexus\Modules\Exception\AuthorizationException::class => 403,
+            \Nexus\Modules\Exception\RouteNotFoundException::class => 404,
+            \Nexus\Modules\Exception\ValidationException::class => 422,
         ];
 
         foreach ($exceptionMap as $exceptionClass => $statusCode) {
@@ -268,8 +258,7 @@ HTML;
      * @param  \Throwable  $exception
      * @return string
      */
-    protected function getDisplayMessage(Throwable $exception)
-    {
+    protected function getDisplayMessage(Throwable $exception) {
         // In production, don't show detailed error messages
         if (!$this->isDebugMode()) {
             return 'An error occurred while processing your request.';
@@ -283,10 +272,9 @@ HTML;
      *
      * @return bool
      */
-    protected function isDebugMode()
-    {
+    protected function isDebugMode() {
         return \Nexus\Modules\Config\Config::get('DEBUG', false) ||
-               \Nexus\Modules\Config\Config::get('APP_DEBUG', false) ||
-               getenv('APP_DEBUG') === 'true';
+            \Nexus\Modules\Config\Config::get('APP_DEBUG', false) ||
+            getenv('APP_DEBUG') === 'true';
     }
 }

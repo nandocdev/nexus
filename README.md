@@ -40,8 +40,11 @@ Un framework PHP profesional y modular construido desde cero sin dependencias ex
 - **File-based Logging**: Sistema de logs configurable
 - **Error Handling**: Manejo graceful de errores
 
-### 🎨 Frontend
-- **Template Engine**: Sistema de vistas con layouts y herencia
+### 🎨 Frontend y Vistas
+- **Sistema de Plantillas Avanzado**: Motor de vistas PHP con layouts, herencia y helpers
+- **View Factory**: Fábrica de vistas con cache y compartición de datos
+- **View Finder**: Localizador inteligente de vistas con namespaces
+- **Helpers Globales**: Funciones helper disponibles en todas las vistas (url, asset, csrf, etc.)
 - **Asset Management**: Estructura organizada para CSS/JS
 - **Bootstrap Integration**: Framework CSS incluido
 
@@ -219,6 +222,65 @@ class Post extends Model {
         return $this->belongsToMany(Tag::class, 'post_tag');
     }
 }
+```
+
+### Sistema de Vistas
+
+El framework incluye un sistema avanzado de plantillas con motor PHP, layouts y helpers globales.
+
+**Renderizar una vista simple:**
+```php
+// En un controlador
+public function index() {
+    return $this->view('welcome', ['message' => 'Hello World']);
+}
+```
+
+**Usar layouts:**
+```php
+public function index() {
+    return $this->view('home', [
+        'title' => 'My App',
+        'layout' => 'layouts/app'
+    ]);
+}
+```
+
+**Helpers disponibles en vistas:**
+```php
+// URLs y assets
+url('users')           // Genera: http://localhost:8080/users
+asset('css/app.css')   // Genera: http://localhost:8080/assets/css/app.css
+route('users.index')   // Genera URL de ruta nombrada
+
+// Seguridad
+csrf()                 // Campo hidden con token CSRF
+e('<script>')          // Escapa HTML: &lt;script&gt;
+
+// Formularios
+method('PUT')          // Input hidden para method spoofing
+old('name')            // Valor anterior del formulario
+
+// Sesión y autenticación
+session('user_id')     // Valor de sesión
+auth()                 // Usuario autenticado
+guest()                // Verifica si no está autenticado
+```
+
+**Ejemplo de vista con helpers:**
+```php
+<!-- home.php -->
+<h1><?php echo e($title); ?></h1>
+<p>Bienvenido a <?php echo e($app_name); ?> v<?php echo e($app_version); ?></p>
+
+<a href="<?php echo url('users'); ?>">Ver usuarios</a>
+
+<form method="POST" action="<?php echo url('users'); ?>">
+    <?php echo csrf(); ?>
+    <?php echo method('POST'); ?>
+    <input type="text" name="name" value="<?php echo old('name'); ?>">
+    <button type="submit">Crear usuario</button>
+</form>
 ```
 
 ### Crear un Controlador

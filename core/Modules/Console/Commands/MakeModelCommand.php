@@ -3,16 +3,13 @@ namespace Nexus\Modules\Console\Commands;
 
 use Nexus\Modules\Console\Command;
 
-class MakeModelCommand extends Command
-{
-    protected function configure()
-    {
+class MakeModelCommand extends Command {
+    protected function configure() {
         $this->signature = 'make:model';
         $this->description = 'Create a new model class';
     }
 
-    public function handle()
-    {
+    public function handle() {
         $name = $this->argument(0);
 
         if (!$name) {
@@ -46,16 +43,14 @@ class MakeModelCommand extends Command
         }
     }
 
-    protected function getModelTemplate($modelName)
-    {
+    protected function getModelTemplate($modelName) {
         return "<?php
 namespace App\Models;
 
 use Nexus\Modules\Database\Model;
 
-class {$modelName} extends Model
-{
-    protected \$table = '" . strtolower($modelName) . "s' . \";
+class {$modelName} extends Model {
+    protected \$table = '" . strtolower($modelName) . "';
     protected \$fillable = [];
     protected \$hidden = [];
     protected \$casts = [];
@@ -65,7 +60,6 @@ class {$modelName} extends Model
     // {
     //     return \$this->belongsTo(RelationshipModel::class);
     // }
-}
-";
+}";
     }
 }
