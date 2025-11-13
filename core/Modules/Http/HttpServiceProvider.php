@@ -33,5 +33,10 @@ class HttpServiceProvider extends ServiceProvider {
         $this->container->bind(ResponseInterface::class, function () {
             return new Response();
         });
+
+        // Register new HTTP abstractions
+        $this->container->bind('rate_limiter', function () {
+            return new RateLimitMiddleware();
+        });
     }
 }

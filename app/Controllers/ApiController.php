@@ -2,7 +2,7 @@
 namespace App\Controllers;
 
 use Nexus\Modules\Http\Controller;
-use Nexus\Modules\Http\Request;
+use Nexus\Modules\Http\ApiResource;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Comment;
@@ -11,7 +11,7 @@ use App\Models\Tag;
 class ApiController extends Controller {
     public function index(Request $request) {
         $users = User::all();
-        $this->json($users);
+        return ApiResource::collection($users, 'Users retrieved successfully');
     }
 
     public function store(Request $request) {
@@ -20,9 +20,9 @@ class ApiController extends Controller {
         $user = User::create($data);
 
         if ($user) {
-            $this->json(['success' => true, 'user' => User::find($user)], 201);
+            return ApiResource::resource($user, 'User created successfully', 201);
         } else {
-            $this->json(['error' => 'Failed to create user'], 500);
+            return ApiResource::error('Failed to create user', 500);
         }
     }
 
@@ -39,16 +39,9 @@ class ApiController extends Controller {
                 ->active()
                 ->get();
 
-            $this->json([
-                'success' => true,
-                'data' => $users,
-                'count' => count($users)
-            ]);
+            return ApiResource::collection($users, 'Users with posts retrieved successfully');
         } catch (\Exception $e) {
-            $this->json([
-                'success' => false,
-                'error' => $e->getMessage()
-            ], 500);
+            return ApiResource::error('Failed to retrieve users: ' . $e->getMessage(), 500);
         }
     }
 
@@ -60,23 +53,17 @@ class ApiController extends Controller {
             $user = User::find($id);
 
             if (!$user) {
-                abort(404, 'User not found');
+                return ApiResource::notFound('User');
             }
 
             // Cargar relaciones ansiosamente
             $user->load(['posts.comments', 'posts.tags']);
 
-            $this->json([
-                'success' => true,
-                'data' => $user
-            ]);
+            return ApiResource::resource($user, 'User retrieved successfully');
         } catch (\Nexus\Modules\Exception\HttpException $e) {
             throw $e;
         } catch (\Exception $e) {
-            $this->json([
-                'success' => false,
-                'error' => $e->getMessage()
-            ], 500);
+            return ApiResource::error('Failed to retrieve user: ' . $e->getMessage(), 500);
         }
     }
 
@@ -100,22 +87,11 @@ class ApiController extends Controller {
                 'published' => true
             ]);
 
-            $this->json([
-                'success' => true,
-                'data' => $post,
-                'message' => 'Post created successfully'
-            ], 201);
+            return ApiResource::resource($post, 'Post created successfully', 201);
         } catch (\Nexus\Modules\Exception\ValidationException $e) {
-            $this->json([
-                'success' => false,
-                'error' => 'Validation failed',
-                'errors' => $e->errors()
-            ], 422);
+            return ApiResource::validationError($e->errors());
         } catch (\Exception $e) {
-            $this->json([
-                'success' => false,
-                'error' => $e->getMessage()
-            ], 500);
+            return ApiResource::error('Failed to create post: ' . $e->getMessage(), 500);
         }
     }
 
@@ -135,15 +111,9 @@ class ApiController extends Controller {
                 LEFT JOIN comments c ON u.id = c.user_id
             ")->fetch(PDO::FETCH_ASSOC);
 
-            $this->json([
-                'success' => true,
-                'data' => $stats
-            ]);
+            return ApiResource::resource($stats, 'Statistics retrieved successfully');
         } catch (\Exception $e) {
-            $this->json([
-                'success' => false,
-                'error' => $e->getMessage()
-            ], 500);
+            return ApiResource::error('Failed to retrieve statistics: ' . $e->getMessage(), 500);
         }
     }
 
@@ -163,15 +133,9 @@ class ApiController extends Controller {
                 ->limit(10)
                 ->get();
 
-            $this->json([
-                'success' => true,
-                'data' => $posts
-            ]);
+            return ApiResource::collection($posts, 'Popular posts retrieved successfully');
         } catch (\Exception $e) {
-            $this->json([
-                'success' => false,
-                'error' => $e->getMessage()
-            ], 500);
+            return ApiResource::error('Failed to retrieve popular posts: ' . $e->getMessage(), 500);
         }
     }
 }
