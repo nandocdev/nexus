@@ -2,19 +2,20 @@
 namespace App\Controllers;
 
 use Nexus\Modules\Http\Controller;
+use Nexus\Modules\Http\Request;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Comment;
 use App\Models\Tag;
 
 class ApiController extends Controller {
-    public function index() {
+    public function index(Request $request) {
         $users = User::all();
         $this->json($users);
     }
 
-    public function store() {
-        $data = json_decode(file_get_contents('php://input'), true) ?? $_POST;
+    public function store(Request $request) {
+        $data = $request->isJson() ? $request->json() : $request->all();
 
         $user = User::create($data);
 
@@ -28,11 +29,11 @@ class ApiController extends Controller {
     /**
      * Get all users with their posts (advanced ORM demo)
      */
-    public function users() {
+    public function users(Request $request) {
         try {
             // Usar query builder avanzado con relaciones
             $users = User::query()
-                ->with(['posts' => function($query) {
+                ->with(['posts' => function ($query) {
                     $query->where('published', true)->limit(5);
                 }])
                 ->active()
@@ -54,7 +55,7 @@ class ApiController extends Controller {
     /**
      * Get user with relationships
      */
-    public function user($id) {
+    public function user(Request $request, $id) {
         try {
             $user = User::find($id);
 
@@ -82,9 +83,9 @@ class ApiController extends Controller {
     /**
      * Create a new post
      */
-    public function createPost() {
+    public function createPost(Request $request) {
         try {
-            validate($_POST, [
+            validate($request->all(), [
                 'title' => 'required|min:5|max:255',
                 'content' => 'required|min:10',
                 'user_id' => 'required|numeric',
@@ -93,9 +94,9 @@ class ApiController extends Controller {
 
             // Crear el post
             $post = Post::create([
-                'title' => $_POST['title'],
-                'content' => $_POST['content'],
-                'user_id' => $_POST['user_id'],
+                'title' => $request->input('title'),
+                'content' => $request->input('content'),
+                'user_id' => $request->input('user_id'),
                 'published' => true
             ]);
 
@@ -121,7 +122,7 @@ class ApiController extends Controller {
     /**
      * Raw SQL query example
      */
-    public function stats() {
+    public function stats(Request $request) {
         try {
             // Consulta SQL cruda para estadísticas
             $stats = User::raw("
@@ -149,7 +150,7 @@ class ApiController extends Controller {
     /**
      * Complex query with joins
      */
-    public function popularPosts() {
+    public function popularPosts(Request $request) {
         try {
             // Posts populares con información del autor y conteo de comentarios
             $posts = Post::query()

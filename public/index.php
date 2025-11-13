@@ -3,6 +3,9 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../core/helpers.php';
 
+use Nexus\Modules\Http\Request;
+use Nexus\Modules\Http\Response;
+
 
 // Cargar configuración
 try {
@@ -17,6 +20,9 @@ try {
 // Inicializar aplicación
 $app = new \Nexus\Bootstrap\Application();
 $app->boot();
+
+// Crear instancia de Request
+$request = Request::capture();
 
 // Obtener servicios del contenedor
 $router = $app->make('router');
@@ -45,13 +51,7 @@ $middleware->add('api', function ($next) {
 require_once __DIR__ . '/../router/web.php';
 
 // Manejar la solicitud
-$method = $_SERVER['REQUEST_METHOD'];
-if ($method === 'POST' && isset($_POST['_method'])) {
-    $method = strtoupper($_POST['_method']);
-}
-$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-
-$route = $router->match($method, $path);
+$route = $router->match($request->method(), $request->path());
 
 if ($route) {
     try {
@@ -64,8 +64,10 @@ if ($route) {
 
         if (is_callable($handler)) {
             // Handler is a closure or callable
-            $result = call_user_func_array($handler, $route['params']);
-            if (is_string($result)) {
+            $result = call_user_func_array($handler, array_merge([$request], $route['params']));
+            if ($result instanceof Response) {
+                $result->send();
+            } elseif (is_string($result)) {
                 echo $result;
             }
         } else {
@@ -75,15 +77,17 @@ if ($route) {
 
             if (class_exists($controllerClass)) {
                 $instance = new $controllerClass();
-                $result = call_user_func_array([$instance, $method], $route['params']);
-                if (is_string($result)) {
+                $result = call_user_func_array([$instance, $method], array_merge([$request], $route['params']));
+                if ($result instanceof Response) {
+                    $result->send();
+                } elseif (is_string($result)) {
                     echo $result;
                 }
             } else {
                 throw new \Nexus\Modules\Exception\RouteNotFoundException(
                     "Controller '{$controller}' not found",
-                    $method,
-                    $path
+                    $request->method(),
+                    $request->path()
                 );
             }
         }
@@ -97,7 +101,7 @@ if ($route) {
 } else {
     throw new \Nexus\Modules\Exception\RouteNotFoundException(
         'The requested resource was not found',
-        $method,
-        $path
+        $request->method(),
+        $request->path()
     );
 }
