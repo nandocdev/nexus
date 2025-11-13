@@ -29,6 +29,9 @@
         },
         "files": [
             "core/helpers.php"
+        ],
+        "exclude-from-classmap": [
+            "database"
         ]
     },
     "autoload-dev": {

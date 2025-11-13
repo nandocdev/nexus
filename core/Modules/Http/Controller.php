@@ -22,14 +22,14 @@ class Controller {
     }
 
     protected function json($data, $status = 200) {
-        http_response_code($status);
-        header('Content-Type: application/json');
-        echo json_encode($data);
+        $response = Response::json($data, $status);
+        $response->send();
         exit;
     }
 
     protected function redirect($url) {
-        header("Location: $url");
+        $response = Response::redirect($url);
+        $response->send();
         exit;
     }
 }

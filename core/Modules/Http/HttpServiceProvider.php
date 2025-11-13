@@ -17,5 +17,21 @@ class HttpServiceProvider extends ServiceProvider {
         $this->container->bind('controller', function() {
             return new Controller();
         });
+
+        $this->container->bind('request', function() {
+            return Request::capture();
+        });
+
+        $this->container->bind('response', function() {
+            return new Response();
+        });
+
+        $this->container->bind(RequestInterface::class, function() {
+            return Request::capture();
+        });
+
+        $this->container->bind(ResponseInterface::class, function() {
+            return new Response();
+        });
     }
 }
