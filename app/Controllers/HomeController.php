@@ -5,6 +5,6 @@ use Nexus\Modules\Http\Controller;
 
 class HomeController extends Controller {
     public function index() {
-        $this->view('home', ['title' => 'Welcome', 'layout' => 'layouts/app']);
+        echo $this->view('home', ['title' => 'Welcome', 'layout' => 'layouts/app']);
     }
 }
