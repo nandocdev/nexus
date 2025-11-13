@@ -1,74 +1,28 @@
 <?php
 namespace Nexus\Modules\Config;
 
-// app/Core/Config.php (versión mejorada)
+// app/Core/Config.php (versión simplificada)
 class Config {
     private static $config = [];
-    private static $envLoaded = false;
-    
-    public static function init() {
-        if (!self::$envLoaded) {
-            // Cargar variables de entorno
-            Env::load();
-            self::$envLoaded = true;
-            
-            // Validar variables requeridas
-            self::validateEnvironment();
-        }
-    }
-    
+
     public static function load($file) {
-        self::init();
-        
         $path = __DIR__ . "/../../../app/Config/{$file}.php";
         if (file_exists($path)) {
-            $config = require $path;
-            
-            // Reemplazar placeholders con variables de entorno
-            $config = self::replaceEnvPlaceholders($config);
-            
-            self::$config = array_merge(self::$config, $config);
+            self::$config[$file] = require $path;
         }
     }
-    
-    private static function replaceEnvPlaceholders($config) {
-        array_walk_recursive($config, function (&$value) {
-            if (is_string($value) && preg_match('/\$\{([^}]+)\}/', $value, $matches)) {
-                $envValue = Env::get($matches[1]);
-                $value = str_replace($matches[0], $envValue, $value);
-            }
-        });
-        
-        return $config;
-    }
-    
-    private static function validateEnvironment() {
-        $required = ['DB_HOST', 'DB_NAME', 'DB_USER'];
-        EnvValidator::validateRequired($required);
-        
-        $rules = [
-            'DB_PORT' => 'int',
-            'DB_HOST' => 'string',
-            'APP_DEBUG' => 'bool'
-        ];
-        EnvValidator::validateTypes($rules);
-    }
-    
+
     public static function get($key, $default = null) {
-        // Primero buscar en configuración cargada
         $keys = explode('.', $key);
         $value = self::$config;
-        
+
         foreach ($keys as $k) {
             if (!isset($value[$k])) {
-                // Si no está en configuración, buscar en variables de entorno
-                $envKey = strtoupper(str_replace('.', '_', $key));
-                $envValue = Env::get($envKey);
-                return $envValue !== null ? $envValue : $default;
+                return $default;
             }
             $value = $value[$k];
         }
-        
+
         return $value;
     }
 }

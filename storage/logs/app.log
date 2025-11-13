@@ -88,3 +88,43 @@
 [2025-11-13 14:52:14] [INFO] Request: GET /
 [2025-11-13 14:52:14] [INFO] Response completed in 0ms
 [2025-11-13 14:52:14] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":94,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 14:52:14"}
+[2025-11-13 15:07:42] [ERROR] Exception occurred {"message":"Call to undefined method Nexus\\Modules\\Console\\Commands\\MigrateCommand::success()","file":"\/srv\/http\/projects\/scheduler\/core\/Modules\/Console\/Commands\/MigrateCommand.php","line":36,"code":0,"trace":"#0 \/srv\/http\/projects\/scheduler\/core\/Modules\/Console\/Commands\/MigrateCommand.php(24): Nexus\\Modules\\Console\\Commands\\MigrateCommand->runMigrations()\n#1 \/srv\/http\/projects\/scheduler\/core\/Modules\/Console\/Kernel.php(88): Nexus\\Modules\\Console\\Commands\\MigrateCommand->handle()\n#2 \/srv\/http\/projects\/scheduler\/nexus(25): Nexus\\Modules\\Console\\Kernel->handle()\n#3 {main}","url":null,"method":null,"user_agent":null,"ip":null,"timestamp":"2025-11-13 15:07:42"}
+[2025-11-13 15:07:42] [ERROR] Exception: Call to undefined method Nexus\Modules\Console\Commands\MigrateCommand::success()
+[2025-11-13 15:07:42] [ERROR] File: /srv/http/projects/scheduler/core/Modules/Console/Commands/MigrateCommand.php:36
+[2025-11-13 15:07:42] [ERROR] Stack trace:
+[2025-11-13 15:07:42] [ERROR] #0 /srv/http/projects/scheduler/core/Modules/Console/Commands/MigrateCommand.php(24): Nexus\Modules\Console\Commands\MigrateCommand->runMigrations()
+#1 /srv/http/projects/scheduler/core/Modules/Console/Kernel.php(88): Nexus\Modules\Console\Commands\MigrateCommand->handle()
+#2 /srv/http/projects/scheduler/nexus(25): Nexus\Modules\Console\Kernel->handle()
+#3 {main}
+[2025-11-13 15:10:24] [ERROR] Exception occurred {"message":"Call to undefined method Nexus\\Modules\\Console\\Commands\\MigrateCommand::success()","file":"\/srv\/http\/projects\/scheduler\/core\/Modules\/Console\/Commands\/MigrateCommand.php","line":36,"code":0,"trace":"#0 \/srv\/http\/projects\/scheduler\/core\/Modules\/Console\/Commands\/MigrateCommand.php(24): Nexus\\Modules\\Console\\Commands\\MigrateCommand->runMigrations()\n#1 \/srv\/http\/projects\/scheduler\/core\/Modules\/Console\/Kernel.php(88): Nexus\\Modules\\Console\\Commands\\MigrateCommand->handle()\n#2 \/srv\/http\/projects\/scheduler\/nexus(25): Nexus\\Modules\\Console\\Kernel->handle()\n#3 {main}","url":null,"method":null,"user_agent":null,"ip":null,"timestamp":"2025-11-13 15:10:24"}
+[2025-11-13 15:10:24] [ERROR] Exception: Call to undefined method Nexus\Modules\Console\Commands\MigrateCommand::success()
+[2025-11-13 15:10:24] [ERROR] File: /srv/http/projects/scheduler/core/Modules/Console/Commands/MigrateCommand.php:36
+[2025-11-13 15:10:24] [ERROR] Stack trace:
+[2025-11-13 15:10:24] [ERROR] #0 /srv/http/projects/scheduler/core/Modules/Console/Commands/MigrateCommand.php(24): Nexus\Modules\Console\Commands\MigrateCommand->runMigrations()
+#1 /srv/http/projects/scheduler/core/Modules/Console/Kernel.php(88): Nexus\Modules\Console\Commands\MigrateCommand->handle()
+#2 /srv/http/projects/scheduler/nexus(25): Nexus\Modules\Console\Kernel->handle()
+#3 {main}
+[2025-11-13 15:11:08] [ERROR] Exception occurred {"message":"Call to undefined method Nexus\\Modules\\Console\\Commands\\MigrateCommand::success()","file":"\/srv\/http\/projects\/scheduler\/core\/Modules\/Console\/Commands\/MigrateCommand.php","line":57,"code":0,"trace":"#0 \/srv\/http\/projects\/scheduler\/core\/Modules\/Console\/Commands\/MigrateCommand.php(21): Nexus\\Modules\\Console\\Commands\\MigrateCommand->rollbackMigrations()\n#1 \/srv\/http\/projects\/scheduler\/core\/Modules\/Console\/Kernel.php(88): Nexus\\Modules\\Console\\Commands\\MigrateCommand->handle()\n#2 \/srv\/http\/projects\/scheduler\/nexus(25): Nexus\\Modules\\Console\\Kernel->handle()\n#3 {main}","url":null,"method":null,"user_agent":null,"ip":null,"timestamp":"2025-11-13 15:11:08"}
+[2025-11-13 15:11:08] [ERROR] Exception: Call to undefined method Nexus\Modules\Console\Commands\MigrateCommand::success()
+[2025-11-13 15:11:08] [ERROR] File: /srv/http/projects/scheduler/core/Modules/Console/Commands/MigrateCommand.php:57
+[2025-11-13 15:11:08] [ERROR] Stack trace:
+[2025-11-13 15:11:08] [ERROR] #0 /srv/http/projects/scheduler/core/Modules/Console/Commands/MigrateCommand.php(21): Nexus\Modules\Console\Commands\MigrateCommand->rollbackMigrations()
+#1 /srv/http/projects/scheduler/core/Modules/Console/Kernel.php(88): Nexus\Modules\Console\Commands\MigrateCommand->handle()
+#2 /srv/http/projects/scheduler/nexus(25): Nexus\Modules\Console\Kernel->handle()
+#3 {main}
+[2025-11-13 15:11:49] [ERROR] Exception occurred {"message":"Call to undefined method Nexus\\Modules\\Console\\Commands\\MigrateCommand::success()","file":"\/srv\/http\/projects\/scheduler\/core\/Modules\/Console\/Commands\/MigrateCommand.php","line":36,"code":0,"trace":"#0 \/srv\/http\/projects\/scheduler\/core\/Modules\/Console\/Commands\/MigrateCommand.php(24): Nexus\\Modules\\Console\\Commands\\MigrateCommand->runMigrations()\n#1 \/srv\/http\/projects\/scheduler\/core\/Modules\/Console\/Kernel.php(88): Nexus\\Modules\\Console\\Commands\\MigrateCommand->handle()\n#2 \/srv\/http\/projects\/scheduler\/nexus(25): Nexus\\Modules\\Console\\Kernel->handle()\n#3 {main}","url":null,"method":null,"user_agent":null,"ip":null,"timestamp":"2025-11-13 15:11:49"}
+[2025-11-13 15:11:49] [ERROR] Exception: Call to undefined method Nexus\Modules\Console\Commands\MigrateCommand::success()
+[2025-11-13 15:11:49] [ERROR] File: /srv/http/projects/scheduler/core/Modules/Console/Commands/MigrateCommand.php:36
+[2025-11-13 15:11:49] [ERROR] Stack trace:
+[2025-11-13 15:11:49] [ERROR] #0 /srv/http/projects/scheduler/core/Modules/Console/Commands/MigrateCommand.php(24): Nexus\Modules\Console\Commands\MigrateCommand->runMigrations()
+#1 /srv/http/projects/scheduler/core/Modules/Console/Kernel.php(88): Nexus\Modules\Console\Commands\MigrateCommand->handle()
+#2 /srv/http/projects/scheduler/nexus(25): Nexus\Modules\Console\Kernel->handle()
+#3 {main}
+[2025-11-13 15:12:15] [ERROR] Exception occurred {"message":"Call to undefined method Nexus\\Modules\\Console\\Commands\\MigrateCommand::success()","file":"\/srv\/http\/projects\/scheduler\/core\/Modules\/Console\/Commands\/MigrateCommand.php","line":57,"code":0,"trace":"#0 \/srv\/http\/projects\/scheduler\/core\/Modules\/Console\/Commands\/MigrateCommand.php(21): Nexus\\Modules\\Console\\Commands\\MigrateCommand->rollbackMigrations()\n#1 \/srv\/http\/projects\/scheduler\/core\/Modules\/Console\/Kernel.php(88): Nexus\\Modules\\Console\\Commands\\MigrateCommand->handle()\n#2 \/srv\/http\/projects\/scheduler\/nexus(25): Nexus\\Modules\\Console\\Kernel->handle()\n#3 {main}","url":null,"method":null,"user_agent":null,"ip":null,"timestamp":"2025-11-13 15:12:15"}
+[2025-11-13 15:12:15] [ERROR] Exception: Call to undefined method Nexus\Modules\Console\Commands\MigrateCommand::success()
+[2025-11-13 15:12:15] [ERROR] File: /srv/http/projects/scheduler/core/Modules/Console/Commands/MigrateCommand.php:57
+[2025-11-13 15:12:15] [ERROR] Stack trace:
+[2025-11-13 15:12:15] [ERROR] #0 /srv/http/projects/scheduler/core/Modules/Console/Commands/MigrateCommand.php(21): Nexus\Modules\Console\Commands\MigrateCommand->rollbackMigrations()
+#1 /srv/http/projects/scheduler/core/Modules/Console/Kernel.php(88): Nexus\Modules\Console\Commands\MigrateCommand->handle()
+#2 /srv/http/projects/scheduler/nexus(25): Nexus\Modules\Console\Kernel->handle()
+#3 {main}
