@@ -1,9 +1,10 @@
 <?php
 namespace Nexus\Modules\Http;
+use Nexus\Bootstrap\Application;
 // app/Core/Controller.php
 class Controller {
     protected function view($view, $data = []) {
-        $viewFactory = \Nexus\Bootstrap\Application::getInstance()->make('view');
+        $viewFactory = Application::getInstance()->make('view');
 
         // Handle layout if specified
         if (isset($data['layout'])) {

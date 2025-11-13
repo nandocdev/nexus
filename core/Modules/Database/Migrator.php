@@ -11,7 +11,7 @@ class Migrator {
 
     public function __construct($migrationPath = null) {
         $this->db = Database::getInstance();
-        $this->migrationPath = $migrationPath ?: __DIR__ . '/../../../app/Migrations';
+        $this->migrationPath = $migrationPath ?: __DIR__ . '/../../../database/migrations';
         $this->ensureMigrationTableExists();
     }
 
@@ -266,7 +266,7 @@ class Migrator {
         $className = ucwords($className);
         $className = str_replace(' ', '', $className);
 
-        return 'App\\Migrations\\' . $className . 'Migration';
+        return $className . 'Migration';
     }
 
     /**

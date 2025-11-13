@@ -1,5 +1,5 @@
 <?php
-namespace App\Migrations;
+namespace Migrations;
 
 use Nexus\Modules\Database\Migration;
 

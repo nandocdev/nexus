@@ -73,3 +73,21 @@ if (!function_exists('validate')) {
         return $validator;
     }
 }
+
+
+if (!function_exists('debug')) {
+    /**
+     * Dump debug information.
+     *
+     * @param  mixed  $data
+     * @return void
+     */
+    function debug($data) {
+        // si configuracion de debug está activada
+        if (env('APP_DEBUG', false)) {
+            echo '<pre>';
+            var_dump($data);
+            echo '</pre>';
+        }
+    }
+}

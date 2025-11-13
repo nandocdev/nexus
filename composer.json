@@ -23,7 +23,9 @@
     "autoload": {
         "psr-4": {
             "Nexus\\": "core/",
-            "App\\": "app/"
+            "App\\": "app/",
+            "Migrations\\": "database/migrations/",
+            "Seeders\\": "database/seeders/"
         },
         "files": [
             "core/helpers.php"

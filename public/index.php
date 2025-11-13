@@ -64,7 +64,10 @@ if ($route) {
 
         if (is_callable($handler)) {
             // Handler is a closure or callable
-            call_user_func_array($handler, $route['params']);
+            $result = call_user_func_array($handler, $route['params']);
+            if (is_string($result)) {
+                echo $result;
+            }
         } else {
             // Handler is a controller string
             list($controller, $method) = explode('@', $handler);
@@ -72,7 +75,10 @@ if ($route) {
 
             if (class_exists($controllerClass)) {
                 $instance = new $controllerClass();
-                call_user_func_array([$instance, $method], $route['params']);
+                $result = call_user_func_array([$instance, $method], $route['params']);
+                if (is_string($result)) {
+                    echo $result;
+                }
             } else {
                 throw new \Nexus\Modules\Exception\RouteNotFoundException(
                     "Controller '{$controller}' not found",

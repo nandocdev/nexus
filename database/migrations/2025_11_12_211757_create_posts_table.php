@@ -1,23 +1,23 @@
 <?php
-namespace App\Migrations;
+namespace Migrations;
 
 use Nexus\Modules\Database\Migration;
 
-class CreateCommentsTableMigration extends Migration {
+class CreatePostsTableMigration extends Migration {
     public function up() {
-        $this->createTable('comments', [
+        $this->createTable('posts', [
             'id' => 'INTEGER PRIMARY KEY AUTOINCREMENT',
+            'title' => 'VARCHAR(255) NOT NULL',
             'content' => 'TEXT NOT NULL',
             'user_id' => 'INTEGER NOT NULL',
-            'post_id' => 'INTEGER NOT NULL',
+            'published' => 'INTEGER DEFAULT 0',
             'created_at' => 'DATETIME DEFAULT CURRENT_TIMESTAMP',
             'updated_at' => 'DATETIME DEFAULT CURRENT_TIMESTAMP',
-            'FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE',
-            'FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE'
+            'FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE'
         ]);
     }
 
     public function down() {
-        $this->dropTable('comments');
+        $this->dropTable('posts');
     }
 }

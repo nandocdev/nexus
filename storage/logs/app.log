@@ -190,3 +190,139 @@
 [2025-11-13 16:52:38] [INFO] Response completed in 0ms
 [2025-11-13 16:52:49] [INFO] Request: GET /
 [2025-11-13 16:52:49] [INFO] Response completed in 0ms
+[2025-11-13 16:55:34] [INFO] Request: GET /
+[2025-11-13 16:55:34] [INFO] Response completed in 0ms
+[2025-11-13 16:57:42] [INFO] Request: GET /
+[2025-11-13 16:57:42] [INFO] Response completed in 0ms
+[2025-11-13 16:58:24] [INFO] Request: GET /
+[2025-11-13 16:58:24] [INFO] Response completed in 0ms
+[2025-11-13 16:58:59] [INFO] Request: GET /
+[2025-11-13 16:58:59] [INFO] Response completed in 0ms
+[2025-11-13 16:58:59] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 16:58:59"}
+[2025-11-13 17:00:54] [INFO] Request: GET /
+[2025-11-13 17:00:54] [INFO] Response completed in 0ms
+[2025-11-13 17:00:54] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:00:54"}
+[2025-11-13 17:01:07] [INFO] Request: GET /
+[2025-11-13 17:01:07] [INFO] Response completed in 0.01ms
+[2025-11-13 17:01:08] [INFO] Request: GET /
+[2025-11-13 17:01:08] [INFO] Response completed in 0ms
+[2025-11-13 17:03:45] [INFO] Request: GET /
+[2025-11-13 17:03:45] [INFO] Response completed in 0ms
+[2025-11-13 17:03:45] [ERROR] Exception occurred {"message":"Class \"View\" does not exist","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":89,"code":500,"trace":"#0 {main}","url":"\/","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:03:45"}
+[2025-11-13 17:03:45] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:03:45"}
+[2025-11-13 17:03:45] [INFO] Request: GET /
+[2025-11-13 17:03:45] [INFO] Response completed in 0ms
+[2025-11-13 17:03:45] [ERROR] Exception occurred {"message":"Class \"View\" does not exist","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":89,"code":500,"trace":"#0 {main}","url":"\/","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:03:45"}
+[2025-11-13 17:03:45] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:03:45"}
+[2025-11-13 17:03:57] [INFO] Request: GET /
+[2025-11-13 17:03:57] [INFO] Response completed in 0ms
+[2025-11-13 17:03:57] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:03:57"}
+[2025-11-13 17:03:57] [INFO] Request: GET /
+[2025-11-13 17:03:57] [INFO] Response completed in 0ms
+[2025-11-13 17:03:58] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:03:58"}
+[2025-11-13 17:03:58] [INFO] Request: GET /
+[2025-11-13 17:03:58] [INFO] Response completed in 0ms
+[2025-11-13 17:03:58] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:03:58"}
+[2025-11-13 17:04:15] [INFO] Request: GET /
+[2025-11-13 17:04:15] [INFO] Response completed in 0ms
+[2025-11-13 17:04:15] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:04:15"}
+[2025-11-13 17:04:15] [INFO] Request: GET /
+[2025-11-13 17:04:15] [INFO] Response completed in 0ms
+[2025-11-13 17:04:15] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:04:15"}
+[2025-11-13 17:04:15] [INFO] Request: GET /
+[2025-11-13 17:04:15] [INFO] Response completed in 0ms
+[2025-11-13 17:04:15] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:04:15"}
+[2025-11-13 17:04:15] [INFO] Request: GET /
+[2025-11-13 17:04:15] [INFO] Response completed in 0ms
+[2025-11-13 17:04:15] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:04:15"}
+[2025-11-13 17:04:16] [INFO] Request: GET /
+[2025-11-13 17:04:16] [INFO] Response completed in 0ms
+[2025-11-13 17:04:16] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:04:16"}
+[2025-11-13 17:04:58] [INFO] Request: GET /
+[2025-11-13 17:04:58] [INFO] Response completed in 0ms
+[2025-11-13 17:04:58] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:04:58"}
+[2025-11-13 17:05:23] [INFO] Request: GET /
+[2025-11-13 17:05:23] [INFO] Response completed in 0ms
+[2025-11-13 17:05:23] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:05:23"}
+[2025-11-13 17:06:36] [INFO] Request: GET /
+[2025-11-13 17:06:36] [INFO] Response completed in 0.01ms
+[2025-11-13 17:06:36] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:06:36"}
+[2025-11-13 17:07:28] [INFO] Request: GET /
+[2025-11-13 17:07:28] [INFO] Response completed in 0ms
+[2025-11-13 17:07:29] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:07:29"}
+[2025-11-13 17:07:29] [INFO] Request: GET /
+[2025-11-13 17:07:29] [INFO] Response completed in 0ms
+[2025-11-13 17:07:29] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:07:29"}
+[2025-11-13 17:07:29] [INFO] Request: GET /
+[2025-11-13 17:07:29] [INFO] Response completed in 0ms
+[2025-11-13 17:07:29] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:07:29"}
+[2025-11-13 17:07:30] [INFO] Request: GET /
+[2025-11-13 17:07:30] [INFO] Response completed in 0ms
+[2025-11-13 17:07:30] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:07:30"}
+[2025-11-13 17:07:39] [INFO] Request: GET /
+[2025-11-13 17:07:39] [INFO] Response completed in 0ms
+[2025-11-13 17:07:39] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:07:39"}
+[2025-11-13 17:07:40] [INFO] Request: GET /
+[2025-11-13 17:07:40] [INFO] Response completed in 0ms
+[2025-11-13 17:07:40] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:07:40"}
+[2025-11-13 17:07:40] [INFO] Request: GET /
+[2025-11-13 17:07:40] [INFO] Response completed in 0ms
+[2025-11-13 17:07:40] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:07:40"}
+[2025-11-13 17:07:40] [INFO] Request: GET /
+[2025-11-13 17:07:40] [INFO] Response completed in 0ms
+[2025-11-13 17:07:40] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:07:40"}
+[2025-11-13 17:07:47] [INFO] Request: GET /
+[2025-11-13 17:07:47] [INFO] Response completed in 0.01ms
+[2025-11-13 17:07:48] [INFO] Request: GET /
+[2025-11-13 17:07:48] [INFO] Response completed in 0ms
+[2025-11-13 17:07:48] [INFO] Request: GET /
+[2025-11-13 17:07:48] [INFO] Response completed in 0ms
+[2025-11-13 17:08:13] [INFO] Request: GET /
+[2025-11-13 17:08:13] [INFO] Response completed in 0ms
+[2025-11-13 17:08:13] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:08:13"}
+[2025-11-13 17:08:13] [INFO] Request: GET /
+[2025-11-13 17:08:13] [INFO] Response completed in 0ms
+[2025-11-13 17:08:13] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:08:13"}
+[2025-11-13 17:08:13] [INFO] Request: GET /
+[2025-11-13 17:08:13] [INFO] Response completed in 0ms
+[2025-11-13 17:08:13] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:08:13"}
+[2025-11-13 17:08:22] [INFO] Request: GET /
+[2025-11-13 17:08:22] [INFO] Response completed in 0ms
+[2025-11-13 17:08:22] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:08:22"}
+[2025-11-13 17:08:22] [INFO] Request: GET /
+[2025-11-13 17:08:22] [INFO] Response completed in 0ms
+[2025-11-13 17:08:22] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:08:22"}
+[2025-11-13 17:08:22] [INFO] Request: GET /
+[2025-11-13 17:08:22] [INFO] Response completed in 0ms
+[2025-11-13 17:08:23] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:08:23"}
+[2025-11-13 17:08:50] [INFO] Request: GET /
+[2025-11-13 17:08:50] [INFO] Response completed in 0ms
+[2025-11-13 17:09:15] [INFO] Request: GET /
+[2025-11-13 17:09:15] [INFO] Response completed in 0ms
+[2025-11-13 17:17:32] [INFO] Request: GET /
+[2025-11-13 17:17:32] [INFO] Response completed in 0ms
+[2025-11-13 17:17:32] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:17:32"}
+[2025-11-13 17:18:25] [INFO] Request: GET /
+[2025-11-13 17:18:25] [INFO] Response completed in 0.01ms
+[2025-11-13 17:18:25] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:18:25"}
+[2025-11-13 17:23:57] [INFO] Request: GET /
+[2025-11-13 17:23:57] [INFO] Response completed in 0ms
+[2025-11-13 17:23:58] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:23:58"}
+[2025-11-13 17:24:20] [INFO] Request: GET /test
+[2025-11-13 17:24:20] [INFO] Response completed in 0ms
+[2025-11-13 17:24:20] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":92,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:24:20"}
+[2025-11-13 17:24:27] [INFO] Request: GET /test-error
+[2025-11-13 17:24:27] [INFO] Response completed in 0ms
+[2025-11-13 17:24:27] [ERROR] Exception occurred {"message":"This is a test error for demonstration purposes","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":89,"code":500,"trace":"#0 {main}","url":"\/test-error","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:24:27"}
+[2025-11-13 17:28:41] [INFO] Request: GET /
+[2025-11-13 17:28:41] [INFO] Response completed in 0ms
+[2025-11-13 17:28:42] [INFO] Request: GET /
+[2025-11-13 17:28:42] [INFO] Response completed in 0ms
+[2025-11-13 17:28:43] [INFO] Request: GET /
+[2025-11-13 17:28:43] [INFO] Response completed in 0ms
+[2025-11-13 17:29:00] [INFO] Request: GET /
+[2025-11-13 17:29:00] [INFO] Response completed in 0ms
+[2025-11-13 17:29:01] [INFO] Request: GET /
+[2025-11-13 17:29:01] [INFO] Response completed in 0ms
+[2025-11-13 17:29:02] [INFO] Request: GET /
+[2025-11-13 17:29:02] [INFO] Response completed in 0ms

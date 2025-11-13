@@ -27,6 +27,7 @@ class Application {
         $this->registerProvider(\Nexus\Modules\View\ViewServiceProvider::class);
         $this->registerProvider(\Nexus\Modules\Console\ConsoleServiceProvider::class);
         $this->registerProvider(\Nexus\Modules\Exception\ExceptionServiceProvider::class);
+        $this->registerProvider(\Nexus\Modules\View\ViewServiceProvider::class);
     }
 
     public function registerProvider(string $providerClass): void {

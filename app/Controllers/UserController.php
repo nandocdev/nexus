@@ -8,21 +8,21 @@ use App\Models\User;
 class UserController extends Controller {
     public function index() {
         $users = User::all();
-        $this->view('users.index', ['users' => $users, 'layout' => 'layouts.app']);
+        $this->view('users.index', ['users' => $users, 'layout' => 'layouts/app']);
     }
-    
+
     public function create() {
-        $this->view('users.create', ['layout' => 'layouts.app']);
+        $this->view('users.create', ['layout' => 'layouts/app']);
     }
-    
+
     public function show($id) {
         $user = User::find($id);
         if (!$user) {
             abort(404, 'User not found');
         }
-        $this->view('users.show', ['user' => $user, 'layout' => 'layouts.app']);
+        $this->view('users.show', ['user' => $user, 'layout' => 'layouts/app']);
     }
-    
+
     public function edit($id) {
         $user = User::find($id);
         if (!$user) {
@@ -30,9 +30,9 @@ class UserController extends Controller {
             echo "User not found";
             return;
         }
-        $this->view('users.edit', ['user' => $user, 'layout' => 'layouts.app']);
+        $this->view('users.edit', ['user' => $user, 'layout' => 'layouts/app']);
     }
-    
+
     public function store() {
         $data = $_POST;
 
@@ -46,7 +46,7 @@ class UserController extends Controller {
         User::create($data);
         $this->redirect('/users');
     }
-    
+
     public function update($id) {
         $data = $_POST;
         $user = User::find($id);
@@ -63,7 +63,7 @@ class UserController extends Controller {
         $user->update($id, $data);
         $this->redirect('/users/' . $id);
     }
-    
+
     public function delete($id) {
         $user = User::find($id);
         if ($user) {
