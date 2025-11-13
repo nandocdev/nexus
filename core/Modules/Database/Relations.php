@@ -6,16 +6,14 @@ use Closure;
 /**
  * Base class for model relationships
  */
-abstract class Relation
-{
+abstract class Relations {
     protected $parent;
     protected $related;
     protected $foreignKey;
     protected $localKey;
     protected $query;
 
-    public function __construct(Model $parent, $related, $foreignKey, $localKey)
-    {
+    public function __construct(Model $parent, $related, $foreignKey, $localKey) {
         $this->parent = $parent;
         $this->related = $related;
         $this->foreignKey = $foreignKey;
@@ -31,8 +29,7 @@ abstract class Relation
     /**
      * Get the query builder for the relationship
      */
-    public function getQuery()
-    {
+    public function getQuery() {
         return $this->query;
     }
 
@@ -54,16 +51,14 @@ abstract class Relation
     /**
      * Get the foreign key name
      */
-    public function getForeignKey()
-    {
+    public function getForeignKey() {
         return $this->foreignKey;
     }
 
     /**
      * Get the local key name
      */
-    public function getLocalKey()
-    {
+    public function getLocalKey() {
         return $this->localKey;
     }
 }
@@ -71,27 +66,22 @@ abstract class Relation
 /**
  * Has One relationship
  */
-class HasOne extends Relation
-{
-    public function getResults()
-    {
+class HasOne extends Relation {
+    public function getResults() {
         $this->addConstraints();
         return $this->query->first();
     }
 
-    public function addConstraints()
-    {
+    public function addConstraints() {
         $this->query->where($this->foreignKey, '=', $this->parent->{$this->localKey});
     }
 
-    public function addEagerConstraints(array $models)
-    {
+    public function addEagerConstraints(array $models) {
         $keys = $this->getKeys($models, $this->localKey);
         $this->query->whereIn($this->foreignKey, $keys);
     }
 
-    public function match(array $models, $results, $relation)
-    {
+    public function match(array $models, $results, $relation) {
         $foreign = $this->foreignKey;
         $local = $this->localKey;
 
@@ -107,8 +97,7 @@ class HasOne extends Relation
         }
     }
 
-    protected function getKeys(array $models, $key)
-    {
+    protected function getKeys(array $models, $key) {
         return array_unique(array_map(function ($model) use ($key) {
             return $model->$key;
         }, $models));
@@ -118,16 +107,13 @@ class HasOne extends Relation
 /**
  * Has Many relationship
  */
-class HasMany extends HasOne
-{
-    public function getResults()
-    {
+class HasMany extends HasOne {
+    public function getResults() {
         $this->addConstraints();
         return $this->query->get();
     }
 
-    public function match(array $models, $results, $relation)
-    {
+    public function match(array $models, $results, $relation) {
         $foreign = $this->foreignKey;
         $local = $this->localKey;
 
@@ -149,27 +135,22 @@ class HasMany extends HasOne
 /**
  * Belongs To relationship
  */
-class BelongsTo extends Relation
-{
-    public function getResults()
-    {
+class BelongsTo extends Relation {
+    public function getResults() {
         $this->addConstraints();
         return $this->query->first();
     }
 
-    public function addConstraints()
-    {
+    public function addConstraints() {
         $this->query->where($this->localKey, '=', $this->parent->{$this->foreignKey});
     }
 
-    public function addEagerConstraints(array $models)
-    {
+    public function addEagerConstraints(array $models) {
         $keys = $this->getKeys($models, $this->foreignKey);
         $this->query->whereIn($this->localKey, $keys);
     }
 
-    public function match(array $models, $results, $relation)
-    {
+    public function match(array $models, $results, $relation) {
         $foreign = $this->foreignKey;
         $local = $this->localKey;
 
@@ -185,8 +166,7 @@ class BelongsTo extends Relation
         }
     }
 
-    protected function getKeys(array $models, $key)
-    {
+    protected function getKeys(array $models, $key) {
         return array_unique(array_map(function ($model) use ($key) {
             return $model->$key;
         }, $models));
@@ -196,40 +176,34 @@ class BelongsTo extends Relation
 /**
  * Belongs To Many relationship (Many-to-Many)
  */
-class BelongsToMany extends Relation
-{
+class BelongsToMany extends Relation {
     protected $pivotTable;
     protected $pivotColumns = ['*'];
     protected $pivotWheres = [];
 
-    public function __construct(Model $parent, $related, $pivotTable, $foreignKey, $relatedKey, $localKey = null)
-    {
+    public function __construct(Model $parent, $related, $pivotTable, $foreignKey, $relatedKey, $localKey = null) {
         $this->pivotTable = $pivotTable;
         parent::__construct($parent, $related, $foreignKey, $localKey ?: $parent->getKeyName());
         $this->relatedKey = $relatedKey;
     }
 
-    public function getResults()
-    {
+    public function getResults() {
         $this->addConstraints();
         return $this->query->get();
     }
 
-    public function addConstraints()
-    {
+    public function addConstraints() {
         $this->query->join($this->pivotTable, $this->related->getTable() . '.' . $this->related->getKeyName(), '=', $this->pivotTable . '.' . $this->relatedKey)
-                    ->where($this->pivotTable . '.' . $this->foreignKey, '=', $this->parent->{$this->localKey});
+            ->where($this->pivotTable . '.' . $this->foreignKey, '=', $this->parent->{$this->localKey});
     }
 
-    public function addEagerConstraints(array $models)
-    {
+    public function addEagerConstraints(array $models) {
         $keys = $this->getKeys($models, $this->localKey);
         $this->query->join($this->pivotTable, $this->related->getTable() . '.' . $this->related->getKeyName(), '=', $this->pivotTable . '.' . $this->relatedKey)
-                    ->whereIn($this->pivotTable . '.' . $this->foreignKey, $keys);
+            ->whereIn($this->pivotTable . '.' . $this->foreignKey, $keys);
     }
 
-    public function match(array $models, $results, $relation)
-    {
+    public function match(array $models, $results, $relation) {
         $foreign = $this->foreignKey;
         $local = $this->localKey;
 
@@ -247,8 +221,7 @@ class BelongsToMany extends Relation
         }
     }
 
-    protected function getKeys(array $models, $key)
-    {
+    protected function getKeys(array $models, $key) {
         return array_unique(array_map(function ($model) use ($key) {
             return $model->$key;
         }, $models));
