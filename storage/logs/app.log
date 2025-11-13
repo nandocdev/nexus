@@ -331,3 +331,7 @@
 [2025-11-13 17:32:06] [ERROR] Exception occurred {"message":"The requested resource was not found","file":"\/srv\/http\/projects\/scheduler\/public\/index.php","line":98,"code":404,"trace":"#0 {main}","url":"\/favicon.ico","method":"GET","user_agent":"Mozilla\/5.0 (X11; Linux x86_64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/142.0.0.0 Safari\/537.36","ip":"127.0.0.1","timestamp":"2025-11-13 17:32:06"}
 [2025-11-13 17:43:47] [INFO] Request: GET /
 [2025-11-13 17:43:47] [INFO] Response completed in 0ms
+[2025-11-13 17:53:17] [INFO] Request: GET /
+[2025-11-13 17:53:17] [INFO] Response completed in 0ms
+[2025-11-13 17:53:44] [INFO] Request: GET /login
+[2025-11-13 17:53:44] [INFO] Response completed in 0.22ms

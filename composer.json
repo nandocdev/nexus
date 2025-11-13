@@ -52,8 +52,24 @@
         "phpstan/phpstan": "^1.9"
     },
     "scripts": {
-        "dev": "php -S 0.0.0.0:8080 -t public",
-        "start": "php -S 0.0.0.0:8080 -t public",
+       
+        "pre-dev-check": [
+            "echo '🔍 Checking requirements...'",
+            "php -r \"if (!file_exists('.env')) { echo '❌ .env file missing!'; exit(1); }\"",
+            "php -r \"if (!is_dir('database/migrations')) { echo '❌ Migrations directory missing!'; exit(1); }\""
+        ],
+        "dev": [
+            "@pre-dev-check",
+            "echo '🚀 Starting NexusCore development server on http://0.0.0.0:8080'",
+            "echo '📁 Document root: public/'",
+            "echo '⏹️  Press Ctrl+C to stop the server'",
+            "echo '================================'",
+            "php -S 0.0.0.0:8080 -t public"
+        ],
+        "start": [
+            "@pre-dev-check", 
+            "php -S 0.0.0.0:8080 -t public"
+        ],
         "serve": [
             "@dev"
         ],
